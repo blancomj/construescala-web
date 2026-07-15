@@ -1,0 +1,278 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const team = [
+  {
+    name: 'Rubiel Rodríguez Arango',
+    role: 'Gerente General',
+    initials: 'RR',
+  },
+  {
+    name: 'Jerika Escala Marcano',
+    role: 'Directora Administrativa',
+    initials: 'JE',
+  },
+  {
+    name: 'Angelica Mendoza Gómez',
+    role: 'Directora de Proyectos',
+    initials: 'AM',
+  },
+  {
+    name: 'Hayroll Escala Marcano',
+    role: 'Director de Operaciones',
+    initials: 'HA',
+  },
+  {
+    name: 'Haroll Escala Marcano',
+    role: 'Directora Comercial',
+    initials: 'HR',
+  },
+];
+---
+
+<Layout title="Nosotros - CONSTRUESCALA">
+  <Navbar />
+
+  <!-- Hero Banner -->
+  <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1920&q=80&auto=format&fit=crop"
+        alt="Sobre nosotros"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-negro/80"></div>
+    </div>
+    <div class="relative z-10 text-center px-6">
+      <span class="text-dorado text-sm tracking-widest uppercase font-medium animate-fade-in">Nosotros</span>
+      <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mt-4 animate-fade-up">
+        Sobre <span class="text-dorado italic">Nuestra Empresa</span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- About Text -->
+  <section class="py-24 lg:py-32 bg-negro">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Image -->
+        <div class="scroll-reveal-left">
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80&auto=format&fit=crop"
+              alt="Interior elegante"
+              class="w-full aspect-[4/5] object-cover"
+              loading="lazy"
+            />
+            <div class="absolute -bottom-6 -right-6 w-32 h-32 border-2 border-dorado -z-10"></div>
+            <div class="absolute -top-6 -left-6 w-32 h-32 bg-dorado/10 -z-10"></div>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="scroll-reveal-right">
+          <span class="text-dorado text-sm tracking-widest uppercase font-medium">Quiénes Somos</span>
+          <h2 class="section-title mt-4 mb-8">
+            Expertos en <span class="text-dorado italic">calidad</span>
+          </h2>
+          <div class="divider-dorado mb-8"></div>
+          <p class="text-gris-claro leading-relaxed mb-6">
+            Somos una empresa polifacética e innovadora en el sector de la construcción, la cual gestiona proyectos y soluciones estratégicos para instituciones privadas. Contamos con un equipo de profesionales y expertos altamente calificados al servicio de nuestros proyectos.
+          </p>
+          <p class="text-gris-claro leading-relaxed mb-8">
+            Nuestro trabajo se traduce en idoneidad, eficacia y calidad para nuestros clientes, garantizando altos estándares en cada proyecto que desarrollamos.
+          </p>
+
+          <!-- Stats -->
+          <div class="grid grid-cols-3 gap-6">
+            <div class="text-center p-4 border border-gris-borde">
+              <span class="font-serif text-3xl font-bold text-dorado">5+</span>
+              <p class="text-gris-claro text-sm mt-2">Años de Experiencia</p>
+            </div>
+            <div class="text-center p-4 border border-gris-borde">
+              <span class="font-serif text-3xl font-bold text-dorado">50+</span>
+              <p class="text-gris-claro text-sm mt-2">Proyectos Realizados</p>
+            </div>
+            <div class="text-center p-4 border border-gris-borde">
+              <span class="font-serif text-3xl font-bold text-dorado">100%</span>
+              <p class="text-gris-claro text-sm mt-2">Satisfacción</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="py-24 lg:py-32 bg-negro-suave">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        <!-- Mission -->
+        <div class="scroll-reveal p-10 lg:p-12 bg-negro border border-gris-borde hover:border-dorado transition-all duration-500">
+          <div class="w-14 h-14 border-2 border-dorado flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-dorado" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="font-serif text-3xl font-bold text-blanco mb-6">Misión</h3>
+          <div class="w-12 h-0.5 bg-dorado mb-6"></div>
+          <p class="text-gris-claro leading-relaxed">
+            En CONSTRUESCALA nos especializamos en ofrecer soluciones integrales en acabados para proyectos de construcción, garantizando altos estándares de calidad, cumplimiento y eficiencia. Nos comprometemos a proporcionar una infraestructura adecuada al entorno de trabajo, así como los recursos tecnológicos, logísticos y humanos necesarios para asegurar un servicio ágil, seguro y alineado con las necesidades de cada cliente.
+          </p>
+        </div>
+
+        <!-- Vision -->
+        <div class="scroll-reveal p-10 lg:p-12 bg-negro border border-gris-borde hover:border-dorado transition-all duration-500" style="transition-delay: 0.15s;">
+          <div class="w-14 h-14 border-2 border-dorado flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-dorado" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          </div>
+          <h3 class="font-serif text-3xl font-bold text-blanco mb-6">Visión</h3>
+          <div class="w-12 h-0.5 bg-dorado mb-6"></div>
+          <p class="text-gris-claro leading-relaxed">
+            Ser una empresa confiable y reconocida por la calidad en acabados, construyendo una reputación sólida a través de alianzas estratégicas y servicios profesionales, con el objetivo de desarrollar en el mediano plazo proyectos propios con excelente proyección en el mercado.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-24 lg:py-32 bg-negro">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center mb-16 scroll-reveal">
+        <span class="text-dorado text-sm tracking-widest uppercase font-medium">Nuestro Equipo</span>
+        <h2 class="section-title mt-4 mb-6">
+          Junta de <span class="text-dorado italic">Socios</span>
+        </h2>
+        <div class="divider-dorado mx-auto"></div>
+      </div>
+
+      <!-- Team Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        {team.map((member, i) => (
+          <div class="group scroll-reveal text-center" style={`transition-delay: ${i * 0.1}s`}>
+            <div class="relative mb-6 mx-auto">
+              <!-- Avatar placeholder -->
+              <div class="w-40 h-40 mx-auto border-2 border-gris-borde group-hover:border-dorado transition-all duration-500 flex items-center justify-center bg-negro-suave relative overflow-hidden">
+                <span class="font-serif text-4xl font-bold text-dorado/50 group-hover:text-dorado transition-colors duration-500">
+                  {member.initials}
+                </span>
+                <!-- Hover overlay -->
+                <div class="absolute inset-0 bg-dorado/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+              <!-- Decorative corner -->
+              <div class="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-dorado translate-x-2 translate-y-2 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+            </div>
+            <h3 class="font-serif text-lg font-semibold text-blanco group-hover:text-dorado transition-colors duration-300">
+              {member.name}
+            </h3>
+            <p class="text-gris-claro text-sm mt-1">
+              {member.role}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Organizational Chart -->
+  <section class="py-24 lg:py-32 bg-negro-suave">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16 scroll-reveal">
+        <span class="text-dorado text-sm tracking-widest uppercase font-medium">Estructura</span>
+        <h2 class="section-title mt-4 mb-6">
+          Organigrama <span class="text-dorado italic">Empresarial</span>
+        </h2>
+        <div class="divider-dorado mx-auto"></div>
+      </div>
+
+      <!-- Org Chart -->
+      <div class="scroll-reveal">
+        <!-- Top Level -->
+        <div class="flex justify-center mb-8">
+          <div class="px-8 py-4 border-2 border-dorado bg-negro text-center">
+            <span class="font-serif text-lg font-semibold text-dorado">Junta de Socios</span>
+          </div>
+        </div>
+
+        <!-- Connector -->
+        <div class="flex justify-center mb-4">
+          <div class="w-px h-8 bg-dorado"></div>
+        </div>
+
+        <!-- Second Level -->
+        <div class="flex justify-center mb-4">
+          <div class="px-8 py-4 border border-gris-borde bg-negro text-center">
+            <span class="font-serif text-lg font-semibold text-blanco">Gerente General</span>
+          </div>
+        </div>
+
+        <!-- Connectors -->
+        <div class="flex justify-center mb-4">
+          <div class="w-px h-8 bg-dorado"></div>
+        </div>
+
+        <!-- Horizontal line -->
+        <div class="flex justify-center mb-4">
+          <div class="w-2/3 h-px bg-gris-borde relative">
+            <div class="absolute left-0 top-0 w-1/3 h-px bg-dorado"></div>
+            <div class="absolute left-1/3 top-0 w-1/3 h-px bg-dorado"></div>
+            <div class="absolute left-2/3 top-0 w-1/3 h-px bg-dorado"></div>
+          </div>
+        </div>
+
+        <!-- Third Level - Departments -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Administrative -->
+          <div class="scroll-reveal-left">
+            <div class="flex justify-center mb-4">
+              <div class="w-px h-8 bg-dorado"></div>
+            </div>
+            <div class="border border-gris-borde bg-negro p-6 text-center hover:border-dorado transition-colors duration-300">
+              <span class="font-serif text-base font-semibold text-blanco block mb-3">Dpto. Administrativo</span>
+              <ul class="space-y-1 text-gris-claro text-sm">
+                <li>Contabilidad</li>
+                <li>Tesorería</li>
+                <li>Cartera</li>
+                <li>Recursos Humanos</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Commercial -->
+          <div class="scroll-reveal">
+            <div class="flex justify-center mb-4">
+              <div class="w-px h-8 bg-dorado"></div>
+            </div>
+            <div class="border border-gris-borde bg-negro p-6 text-center hover:border-dorado transition-colors duration-300">
+              <span class="font-serif text-base font-semibold text-blanco block mb-3">Dpto. Comercial</span>
+              <ul class="space-y-1 text-gris-claro text-sm">
+                <li>Compras Nacionales</li>
+                <li>Importaciones</li>
+                <li>Ventas</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Operations -->
+          <div class="scroll-reveal-right">
+            <div class="flex justify-center mb-4">
+              <div class="w-px h-8 bg-dorado"></div>
+            </div>
+            <div class="border border-gris-borde bg-negro p-6 text-center hover:border-dorado transition-colors duration-300">
+              <span class="font-serif text-base font-semibold text-blanco block mb-3">Dpto. de Operaciones</span>
+              <ul class="space-y-1 text-gris-claro text-sm">
+                <li>Gerencia de Proyectos</li>
+                <li>Nuevos Proyectos</li>
+                <li>Gerencia de Obras</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,80 @@
+---
+const projects = [
+  {
+    title: 'Casa Finca Monte Verde',
+    location: 'El Retiro, Antioquia',
+    category: 'Reforma',
+    date: 'May - Ago 2024',
+    image: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80&auto=format&fit=crop',
+    description: 'Reforma parcial enfocada en la renovación de pisos y acabados murales, integrando materiales naturales y aportando calidez al espacio.',
+  },
+  {
+    title: 'Restaurante Crepes Waflex',
+    location: 'Bocagrande, Cartagena',
+    category: 'Remodelación',
+    date: 'Oct - Dic 2024',
+    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80&auto=format&fit=crop',
+    description: 'Instalación de piso en mosaico tipo ajedrez con acabado estético distintivo, resistente al tráfico comercial.',
+  },
+  {
+    title: 'Apto. 501 Edificio Miró',
+    location: 'Poblado, Medellín',
+    category: 'Interiorismo',
+    date: 'Feb - Abr 2024',
+    image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=800&q=80&auto=format&fit=crop',
+    description: 'Remodelación integral con modernización de espacios, renovación de acabados e incorporación de mobiliario fijo y móvil.',
+  },
+];
+---
+
+<section class="py-24 lg:py-32 bg-negro-suave">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16 scroll-reveal">
+      <div>
+        <span class="text-dorado text-sm tracking-widest uppercase font-medium">Portafolio</span>
+        <h2 class="section-title mt-4 mb-6">
+          Proyectos <span class="text-dorado italic">destacados</span>
+        </h2>
+        <div class="divider-dorado mb-6"></div>
+      </div>
+      <a href="/portafolio" class="btn-dorado-outline text-xs self-start md:self-auto">
+        Ver todos
+      </a>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      {projects.map((project, i) => (
+        <a
+          href="/portafolio"
+          class="group scroll-reveal block"
+          style={`transition-delay: ${i * 0.15}s`}
+        >
+          <div class="img-overlay aspect-[4/5] overflow-hidden">
+            <img
+              src={project.image}
+              alt={project.title}
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-6 bg-negro border border-t-0 border-gris-borde group-hover:border-dorado transition-all duration-300">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-dorado text-xs tracking-wider uppercase font-medium">{project.category}</span>
+              <span class="w-1 h-1 bg-gris-texto rounded-full"></span>
+              <span class="text-gris-texto text-xs">{project.date}</span>
+            </div>
+            <h3 class="font-serif text-xl font-semibold text-blanco mb-2 group-hover:text-dorado transition-colors duration-300">
+              {project.title}
+            </h3>
+            <p class="text-gris-claro text-sm flex items-center gap-2">
+              <svg class="w-4 h-4 text-dorado" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              {project.location}
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,75 @@
+---
+const navLinks = [
+  { href: '/', label: 'Inicio' },
+  { href: '/nosotros', label: 'Nosotros' },
+  { href: '/servicios', label: 'Servicios' },
+  { href: '/portafolio', label: 'Portafolio' },
+  { href: '/contacto', label: 'Contacto' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 border-2 border-dorado flex items-center justify-center transition-all duration-300 group-hover:bg-dorado">
+          <span class="font-serif text-dorado text-xl font-bold group-hover:text-negro transition-colors">C</span>
+        </div>
+        <div class="hidden sm:block">
+          <span class="font-serif text-xl font-semibold tracking-wider text-blanco">CONSTRU</span><span class="font-serif text-xl font-semibold tracking-wider text-dorado">ESCALA</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-10">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class={`text-sm tracking-widest uppercase font-medium transition-colors duration-300 hover-gold ${
+              currentPath === link.href ? 'text-dorado' : 'text-blanco/80 hover:text-dorado'
+            }`}
+          >
+            {link.label}
+          </a>
+        ))}
+        <a href="/contacto" class="btn-dorado text-xs">
+          Contáctanos
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="menu-btn"
+        class="lg:hidden flex flex-col gap-1.5 p-2 group"
+        aria-label="Menú"
+      >
+        <span class="w-6 h-0.5 bg-blanco transition-all duration-300 group-hover:bg-dorado"></span>
+        <span class="w-6 h-0.5 bg-blanco transition-all duration-300 group-hover:bg-dorado"></span>
+        <span class="w-4 h-0.5 bg-dorado transition-all duration-300"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden fixed inset-0 bg-negro/98 flex-col items-center justify-center gap-8 lg:hidden"
+  >
+    {navLinks.map(link => (
+      <a
+        href={link.href}
+        class={`text-2xl tracking-widest uppercase font-serif transition-colors duration-300 ${
+          currentPath === link.href ? 'text-dorado' : 'text-blanco hover:text-dorado'
+        }`}
+      >
+        {link.label}
+      </a>
+    ))}
+    <a href="/contacto" class="btn-dorado mt-4">
+      Contáctanos
+    </a>
+  </div>
+</nav>

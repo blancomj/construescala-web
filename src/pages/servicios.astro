@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const services = [
+  {
+    number: '01',
+    title: 'Diseño Arquitectónico',
+    subtitle: 'Creamos espacios que inspiran',
+    description: 'Diseño arquitectónico, disciplina que tiene por objeto generar propuestas e ideas para la creación y realización de espacios físicos enmarcados dentro de la arquitectura. En esta escala del diseño intervienen factores como los geométricos-espaciales, higiénico-constructivos y estético formales.',
+    details: [
+      'Diseño estructural',
+      'Diseño de interiores',
+      'Diseño lumínico',
+      'Diseño de jardinería',
+      'Diseño de muebles',
+    ],
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80&auto=format&fit=crop',
+  },
+  {
+    number: '02',
+    title: 'Madera & Ambientación',
+    subtitle: 'Soluciones integrales en madera',
+    description: 'Desarrollamos e implementamos proyectos en madera con enfoque funcional y estético, adaptados a cada espacio. Ejecutamos desde estructuras hasta acabados personalizados, integrando técnicas de carpintería especializada y criterios de diseño interior.',
+    details: [
+      'Estructuras en madera',
+      'Acabados personalizados',
+      'Carpintería especializada',
+      'Ambientación espacial',
+      'Soluciones integrales',
+    ],
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80&auto=format&fit=crop',
+  },
+  {
+    number: '03',
+    title: 'Interiorismo Residencial y Comercial',
+    subtitle: 'Diseño interior con enfoque técnico',
+    description: 'Ofrecemos servicios de diseño interior con enfoque técnico, acompañados de la ejecución integral del proyecto. Nos especializamos en soluciones adaptadas a las necesidades del espacio, cumpliendo con estándares de calidad, funcionalidad y coherencia visual.',
+    details: [
+      'Diseño residencial',
+      'Diseño comercial',
+      'Ejecución integral',
+      'Mobiliario fijo y móvil',
+      'Iluminación LED',
+    ],
+    image: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80&auto=format&fit=crop',
+  },
+];
+---
+
+<Layout title="Servicios - CONSTRUESCALA">
+  <Navbar />
+
+  <!-- Hero Banner -->
+  <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1920&q=80&auto=format&fit=crop"
+        alt="Servicios"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-negro/80"></div>
+    </div>
+    <div class="relative z-10 text-center px-6">
+      <span class="text-dorado text-sm tracking-widest uppercase font-medium animate-fade-in">Servicios</span>
+      <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mt-4 animate-fade-up">
+        Nuestros <span class="text-dorado italic">Servicios</span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- Services Detail -->
+  <section class="py-24 lg:py-32 bg-negro">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="space-y-32">
+        {services.map((service, i) => (
+          <div class={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${i % 2 === 1 ? 'lg:direction-rtl' : ''}`}>
+            <!-- Image -->
+            <div class={`${i % 2 === 1 ? 'lg:order-2 scroll-reveal-right' : 'scroll-reveal-left'}`}>
+              <div class="relative">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  class="w-full aspect-[4/3] object-cover"
+                  loading="lazy"
+                />
+                <!-- Number overlay -->
+                <div class="absolute -top-4 -left-4 lg:-top-6 lg:-left-6">
+                  <span class="font-serif text-7xl lg:text-9xl font-bold text-dorado/20">{service.number}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class={`${i % 2 === 1 ? 'lg:order-1 scroll-reveal-left' : 'scroll-reveal-right'}`}>
+              <span class="text-dorado text-sm tracking-widest uppercase font-medium">{service.subtitle}</span>
+              <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-blanco mt-4 mb-6">
+                {service.title}
+              </h2>
+              <div class="w-16 h-0.5 bg-dorado mb-8"></div>
+              <p class="text-gris-claro leading-relaxed mb-8">
+                {service.description}
+              </p>
+              
+              <!-- Details list -->
+              <ul class="space-y-3 mb-10">
+                {service.details.map(detail => (
+                  <li class="flex items-center gap-3 text-blanco">
+                    <svg class="w-5 h-5 text-dorado shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    {detail}
+                  </li>
+                ))}
+              </ul>
+
+              <a href="/contacto" class="btn-dorado">
+                Solicitar Cotización
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 bg-negro-suave">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center scroll-reveal">
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-blanco mb-6">
+        ¿Tienes un proyecto en mente?
+      </h2>
+      <p class="text-gris-claro text-lg mb-8 max-w-2xl mx-auto">
+        Contáctanos para discutir tus ideas y recibir una cotización personalizada
+      </p>
+      <a href="/contacto" class="btn-dorado">
+        Contáctanos Ahora
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

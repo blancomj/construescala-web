@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const projects = [
+  {
+    id: 1,
+    title: 'Reforma Casa Finca Monte Verde',
+    location: 'El Retiro, Antioquia',
+    category: 'reforma',
+    categoryLabel: 'Reforma',
+    startDate: '05/05/2024',
+    endDate: '01/08/2024',
+    image: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80&auto=format&fit=crop',
+    description: 'Reforma parcial enfocada en la renovación de pisos y acabados murales, con el objetivo de integrar materiales naturales y aportar calidez al espacio.',
+    details: [
+      'Instalación de cerámica que simula piedra natural como nuevo revestimiento de piso',
+      'Aplicación de acabado texturizado en muros interiores',
+      'Estética rústica y armónica con el entorno natural',
+    ],
+    result: 'Espacios interiores con mayor carácter, calidez y conexión con el entorno, mediante el uso de materiales nobles y acabados artesanales.',
+  },
+  {
+    id: 2,
+    title: 'Instalación de Piso en Mosaico',
+    location: 'Bocagrande, Cartagena',
+    category: 'remodelacion',
+    categoryLabel: 'Remodelación',
+    startDate: '12/10/2024',
+    endDate: '20/12/2024',
+    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80&auto=format&fit=crop',
+    description: 'Reemplazo del piso existente en el restaurante mediante demolición controlada y posterior instalación de piso en mosaico tipo ajedrez.',
+    details: [
+      'Demolición del piso existente',
+      'Preparación y nivelación de la superficie base',
+      'Suministro e instalación de mosaico modelo ajedrez',
+      'Sellado de juntas y limpieza final',
+    ],
+    result: 'Piso renovado con acabado estético distintivo, resistente al tráfico comercial y acorde a la identidad visual del restaurante.',
+  },
+  {
+    id: 3,
+    title: 'Remodelación y Reforma Mobiliaria',
+    location: 'Poblado, Medellín',
+    category: 'interiorismo',
+    categoryLabel: 'Interiorismo',
+    startDate: '03/02/2024',
+    endDate: '17/04/2024',
+    image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=800&q=80&auto=format&fit=crop',
+    description: 'Remodelación integral del apartamento orientada a la modernización de espacios, renovación de acabados e incorporación de mobiliario fijo y móvil.',
+    details: [
+      'Demoliciones menores y adecuaciones',
+      'Renovación de instalaciones eléctricas e hidráulicas',
+      'Diseño e instalación de mobiliario fijo (cocina, closets, baños)',
+      'Optimización de iluminación artificial con sistema LED',
+    ],
+    result: 'Espacio renovado, funcional y actualizado, con mejoras en confort, estética y valor inmobiliario.',
+  },
+];
+---
+
+<Layout title="Portafolio - CONSTRUESCALA">
+  <Navbar />
+
+  <!-- Hero Banner -->
+  <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80&auto=format&fit=crop"
+        alt="Portafolio"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-negro/80"></div>
+    </div>
+    <div class="relative z-10 text-center px-6">
+      <span class="text-dorado text-sm tracking-widest uppercase font-medium animate-fade-in">Portafolio</span>
+      <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mt-4 animate-fade-up">
+        Nuestros <span class="text-dorado italic">Proyectos</span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="py-24 lg:py-32 bg-negro">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="space-y-32">
+        {projects.map((project, i) => (
+          <div class="scroll-reveal">
+            <!-- Project Image with Parallax -->
+            <div class="parallax-container aspect-[16/9] lg:aspect-[21/9] overflow-hidden mb-8">
+              <img
+                src={project.image}
+                alt={project.title}
+                class="parallax-img w-full h-[120%] object-cover"
+                loading="lazy"
+              />
+            </div>
+
+            <!-- Project Info -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <!-- Main Info -->
+              <div class="lg:col-span-2">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="px-3 py-1 border border-dorado text-dorado text-xs tracking-wider uppercase">
+                    {project.categoryLabel}
+                  </span>
+                  <span class="text-gris-texto text-sm">
+                    {project.startDate} - {project.endDate}
+                  </span>
+                </div>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-blanco mb-4">
+                  {project.title}
+                </h2>
+                <p class="text-gris-claro flex items-center gap-2 mb-6">
+                  <svg class="w-5 h-5 text-dorado" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  {project.location}
+                </p>
+                <p class="text-gris-claro leading-relaxed">
+                  {project.description}
+                </p>
+              </div>
+
+              <!-- Details -->
+              <div class="border border-gris-borde p-6">
+                <h3 class="font-serif text-lg font-semibold text-dorado mb-4">Ejecución</h3>
+                <ul class="space-y-2">
+                  {project.details.map(detail => (
+                    <li class="flex items-start gap-2 text-gris-claro text-sm">
+                      <svg class="w-4 h-4 text-dorado mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <!-- Result -->
+            <div class="mt-8 p-6 bg-negro-suave border-l-2 border-dorado">
+              <h3 class="font-serif text-lg font-semibold text-blanco mb-2">Resultado</h3>
+              <p class="text-gris-claro leading-relaxed">
+                {project.result}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 bg-negro-suave">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center scroll-reveal">
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-blanco mb-6">
+        ¿Quieres ser nuestro próximo proyecto?
+      </h2>
+      <p class="text-gris-claro text-lg mb-8 max-w-2xl mx-auto">
+        Cuéntanos tu idea y hagamos realidad un espacio que supere tus expectativas
+      </p>
+      <a href="/contacto" class="btn-dorado">
+        Contáctanos
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
