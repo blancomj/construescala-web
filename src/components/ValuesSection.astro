@@ -1,0 +1,106 @@
+---
+import type { Language } from '../i18n/index.ts';
+import { getTranslations } from '../i18n/index.ts';
+
+interface Props {
+  lang?: Language;
+}
+
+const { lang = 'es' } = Astro.props;
+const t = getTranslations(lang);
+
+const values = [
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>`,
+    title: lang === 'es' ? 'Cuidado al Detalle' : 'Attention to Detail',
+    description: lang === 'es' 
+      ? 'Cada proyecto es único. Nos enfocamos en los más mínimos detalles para garantizar resultados excepcionales que superen las expectativas.'
+      : 'Every project is unique. We focus on the smallest details to ensure exceptional results that exceed expectations.',
+    image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&q=80&auto=format&fit=crop'
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>`,
+    title: lang === 'es' ? 'Atención al Cliente' : 'Customer Service',
+    description: lang === 'es'
+      ? 'Escuchamos, entendemos y acompañamos a nuestro cliente en cada etapa del proyecto, asegurando una experiencia personalizada y cercana.'
+      : 'We listen, understand and accompany our client at every stage of the project, ensuring a personalized and close experience.',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80&auto=format&fit=crop'
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+    title: lang === 'es' ? 'Cumplimiento' : 'Commitment',
+    description: lang === 'es'
+      ? 'Nuestra palabra es nuestro compromiso. Cumplimos con los plazos, presupuestos y especificaciones acordadas en cada proyecto.'
+      : 'Our word is our commitment. We meet deadlines, budgets and specifications agreed upon in each project.',
+    image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600&q=80&auto=format&fit=crop'
+  }
+];
+---
+
+<section class="py-24 lg:py-32 bg-crema relative overflow-hidden">
+  <!-- Parallax Background Elements -->
+  <div class="absolute inset-0 parallax-container pointer-events-none">
+    <div class="absolute top-20 -left-20 w-64 h-64 bg-dorado/10 rounded-full blur-3xl parallax-img"></div>
+    <div class="absolute bottom-20 -right-20 w-80 h-80 bg-dorado/5 rounded-full blur-3xl parallax-img"></div>
+  </div>
+
+  <!-- Decorative geometric shapes -->
+  <div class="absolute top-10 right-10 w-24 h-24 border border-dorado/20 rotate-45 opacity-40"></div>
+  <div class="absolute bottom-10 left-10 w-16 h-16 border border-dorado/20 rotate-12 opacity-30"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+    <!-- Header -->
+    <div class="text-center mb-20 scroll-reveal">
+      <span class="text-dorado text-sm tracking-widest uppercase font-medium">{lang === 'es' ? 'Nuestros Valores' : 'Our Values'}</span>
+      <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-negro mt-4 mb-6">
+        {lang === 'es' ? 'Lo que nos' : 'What'} <span class="text-dorado italic">{lang === 'es' ? 'define' : 'defines us'}</span>
+      </h2>
+      <div class="w-16 h-0.5 bg-dorado mx-auto mb-6"></div>
+      <p class="text-gris-texto text-lg max-w-2xl mx-auto">
+        {lang === 'es' 
+          ? 'Valores que guían cada proyecto y relación con nuestros clientes'
+          : 'Values that guide every project and relationship with our clients'
+        }
+      </p>
+    </div>
+
+    <!-- Values Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+      {values.map((value, i) => (
+        <div class="group scroll-reveal" style={`transition-delay: ${i * 0.2}s`}>
+          <div class="relative bg-blanco overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 h-full">
+            <!-- Image with parallax effect -->
+            <div class="relative h-64 overflow-hidden parallax-container">
+              <img
+                src={value.image}
+                alt={value.title}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-negro/60 to-transparent"></div>
+              
+              <!-- Icon overlay -->
+              <div class="absolute bottom-4 left-4 w-16 h-16 bg-dorado flex items-center justify-center text-negro transition-transform duration-300 group-hover:rotate-6">
+                <Fragment set:html={value.icon} />
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-8">
+              <h3 class="font-serif text-2xl font-bold text-negro mb-4 group-hover:text-dorado transition-colors duration-300">
+                {value.title}
+              </h3>
+              <p class="text-gris-texto leading-relaxed">
+                {value.description}
+              </p>
+            </div>
+
+            <!-- Bottom accent line -->
+            <div class="h-1 bg-dorado transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
