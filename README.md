@@ -1,10 +1,21 @@
 # construescala-web
 
-Sitio web de la empresa Construescala construido con Astro.
+Sitio web de Construescala construido con Astro.
 
-## Estructura
+## Estructura del proyecto
 
 - `src/` - componentes y páginas
-- `public/` - activos públicos
+- `public/` - recursos públicos
 - `astro.config.mjs` - configuración de Astro
 - `package.json` - dependencias y scripts
+
+## Uso
+
+1. Instalar dependencias:
+   ```bash
+   npm install
+   ```
+2. Ejecutar localmente:
+   ```bash
+   npm run dev
+   ```

@@ -1,15 +1,16 @@
 # Node dependencies
 node_modules/
 
-# Build output
+# Generated files
+.dist/
 dist/
-.coverage/
+.astro/
 
 # Local environment files
 .env
 .env.*
 
-# IDE files
+# IDE/editor files
 .vscode/
 *.log
 
