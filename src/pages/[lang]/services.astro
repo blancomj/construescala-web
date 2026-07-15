@@ -1,21 +1,47 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import { getTranslations } from '../i18n/index.ts';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { getTranslations, type Language } from '../../i18n/index.ts';
 
-const t = getTranslations('es');
+export const prerender = true;
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const t = getTranslations(lang as Language);
+
+const titles: Record<string, string> = {
+  es: 'Servicios - CONSTRUESCALA',
+  en: 'Services - CONSTRUESCALA',
+};
+
+const altTexts: Record<string, string> = {
+  es: 'Servicios',
+  en: 'Services',
+};
+
+const images = [
+  '1600607687939-ce8a6c25118c',
+  '1600585154340-be6161a56a0c',
+  '1600210492493-0946911123ea',
+];
 ---
 
-<Layout title="Servicios - CONSTRUESCALA" lang="es">
-  <Navbar lang="es" />
+<Layout title={titles[lang]} lang={lang as Language}>
+  <Navbar lang={lang as Language} />
 
   <!-- Hero Banner -->
   <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0">
       <img
         src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1920&q=80&auto=format&fit=crop"
-        alt="Servicios"
+        alt={altTexts[lang]}
         class="w-full h-full object-cover"
       />
       <div class="absolute inset-0 bg-negro/80"></div>
@@ -37,7 +63,7 @@ const t = getTranslations('es');
             <div class={`${i % 2 === 1 ? 'lg:order-2 scroll-reveal-right' : 'scroll-reveal-left'}`}>
               <div class="relative">
                 <img
-                  src={`https://images.unsplash.com/photo-${i === 0 ? '1600607687939-ce8a6c25118c' : i === 1 ? '1600585154340-be6161a56a0c' : '1600210492493-0946911123ea'}?w=800&q=80&auto=format&fit=crop`}
+                  src={`https://images.unsplash.com/photo-${images[i]}?w=800&q=80&auto=format&fit=crop`}
                   alt={service.title}
                   class="w-full aspect-[4/3] object-cover"
                   loading="lazy"
@@ -67,7 +93,7 @@ const t = getTranslations('es');
                 ))}
               </ul>
 
-              <a href="/contacto" class="btn-dorado">
+              <a href={`/${lang}/contact`} class="btn-dorado">
                 {t.servicesPage.cta}
               </a>
             </div>
@@ -86,11 +112,11 @@ const t = getTranslations('es');
       <p class="text-gris-claro text-lg mb-8 max-w-2xl mx-auto">
         {t.servicesPage.ctaSection.description}
       </p>
-      <a href="/contacto" class="btn-dorado">
+      <a href={`/${lang}/contact`} class="btn-dorado">
         {t.servicesPage.ctaSection.cta}
       </a>
     </div>
   </section>
 
-  <Footer lang="es" />
+  <Footer lang={lang as Language} />
 </Layout>

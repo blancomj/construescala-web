@@ -27,7 +27,7 @@ const projectImages = [
         </h2>
         <div class="divider-dorado mb-6"></div>
       </div>
-      <a href={lang === 'es' ? '/portafolio' : '/en/portfolio'} class="btn-dorado-outline text-xs self-start md:self-auto">
+      <a href={`/${lang}/portfolio`} class="btn-dorado-outline text-xs self-start md:self-auto">
         {t.projects.viewAll}
       </a>
     </div>
@@ -36,7 +36,7 @@ const projectImages = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
       {t.projects.items.map((project, i) => (
         <a
-          href={lang === 'es' ? '/portafolio' : '/en/portfolio'}
+          href={`/${lang}/portfolio`}
           class="group scroll-reveal block"
           style={`transition-delay: ${i * 0.2}s`}
         >

@@ -10,11 +10,11 @@ const { lang = 'es' } = Astro.props;
 const t = getTranslations(lang);
 
 const navLinks = [
-  { href: lang === 'es' ? '/' : '/en/', label: t.nav.home },
-  { href: lang === 'es' ? '/nosotros' : '/en/about', label: t.nav.about },
-  { href: lang === 'es' ? '/servicios' : '/en/services', label: t.nav.services },
-  { href: lang === 'es' ? '/portafolio' : '/en/portfolio', label: t.nav.portfolio },
-  { href: lang === 'es' ? '/contacto' : '/en/contact', label: t.nav.contact },
+  { href: `/${lang}/`, label: t.nav.home },
+  { href: `/${lang}/about`, label: t.nav.about },
+  { href: `/${lang}/services`, label: t.nav.services },
+  { href: `/${lang}/portfolio`, label: t.nav.portfolio },
+  { href: `/${lang}/contact`, label: t.nav.contact },
 ];
 ---
 
@@ -26,7 +26,7 @@ const navLinks = [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
       <!-- Logo & Description -->
       <div class="lg:col-span-2">
-        <a href={lang === 'es' ? '/' : '/en/'} class="inline-flex items-center gap-3 mb-6 group">
+        <a href={`/${lang}/`} class="inline-flex items-center gap-3 mb-6 group">
           <div class="w-10 h-10 border-2 border-dorado flex items-center justify-center transition-all duration-300 group-hover:bg-dorado group-hover:rotate-45">
             <span class="font-serif text-dorado text-xl font-bold group-hover:text-negro transition-all duration-300 group-hover:-rotate-45">C</span>
           </div>

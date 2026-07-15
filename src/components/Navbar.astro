@@ -11,11 +11,11 @@ const t = getTranslations(lang);
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
-  { href: lang === 'es' ? '/' : '/en/', label: t.nav.home },
-  { href: lang === 'es' ? '/nosotros' : '/en/about', label: t.nav.about },
-  { href: lang === 'es' ? '/servicios' : '/en/services', label: t.nav.services },
-  { href: lang === 'es' ? '/portafolio' : '/en/portfolio', label: t.nav.portfolio },
-  { href: lang === 'es' ? '/contacto' : '/en/contact', label: t.nav.contact },
+  { href: `/${lang}/`, label: t.nav.home },
+  { href: `/${lang}/about`, label: t.nav.about },
+  { href: `/${lang}/services`, label: t.nav.services },
+  { href: `/${lang}/portfolio`, label: t.nav.portfolio },
+  { href: `/${lang}/contact`, label: t.nav.contact },
 ];
 
 const alternateUrl = getAlternateLangUrl(Astro.url, lang);
@@ -25,7 +25,7 @@ const alternateUrl = getAlternateLangUrl(Astro.url, lang);
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
       <!-- Logo -->
-      <a href={lang === 'es' ? '/' : '/en/'} class="flex items-center gap-3 group relative z-50">
+      <a href={`/${lang}/`} class="flex items-center gap-3 group relative z-50">
         <div class="w-10 h-10 border-2 border-dorado flex items-center justify-center transition-all duration-300 group-hover:bg-dorado group-hover:rotate-45">
           <span class="font-serif text-dorado text-xl font-bold group-hover:text-negro transition-all duration-300 group-hover:-rotate-45">C</span>
         </div>
@@ -70,7 +70,7 @@ const alternateUrl = getAlternateLangUrl(Astro.url, lang);
         </a>
 
         <!-- CTA Button -->
-        <a href={lang === 'es' ? '/contacto' : '/en/contact'} class="relative px-6 py-2.5 bg-dorado text-negro font-semibold tracking-wider uppercase text-xs overflow-hidden group">
+        <a href={`/${lang}/contact`} class="relative px-6 py-2.5 bg-dorado text-negro font-semibold tracking-wider uppercase text-xs overflow-hidden group">
           <span class="relative z-10 group-hover:text-negro transition-colors duration-300">{t.nav.cta}</span>
           <div class="absolute inset-0 bg-dorado-claro transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
         </a>
@@ -123,7 +123,7 @@ const alternateUrl = getAlternateLangUrl(Astro.url, lang);
 
       <!-- Mobile CTA -->
       <a
-        href={lang === 'es' ? '/contacto' : '/en/contact'}
+        href={`/${lang}/contact`}
         class="mt-4 btn-dorado mobile-nav-link opacity-0 translate-y-8"
         style={`transition-delay: ${(navLinks.length + 1) * 0.1}s`}
       >

@@ -36,7 +36,7 @@ const t = getTranslations(lang);
       {t.cta.description}
     </p>
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href={lang === 'es' ? '/contacto' : '/en/contact'} class="btn-dorado magnetic relative overflow-hidden group">
+      <a href={`/${lang}/contact`} class="btn-dorado magnetic relative overflow-hidden group">
         <span class="relative z-10">{t.cta.cta1}</span>
         <div class="absolute inset-0 bg-dorado-claro transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
       </a>

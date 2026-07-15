@@ -44,16 +44,16 @@ const t = getTranslations(lang);
     </p>
 
     <!-- Description -->
-    <p class="text-gris-claro text-base sm:text-lg max-w-2xl mx-auto mb-10 opacity-0 animate-fade-up" style="animation-delay: 1s;">
+    <p class="text-blanco/80 text-base sm:text-lg max-w-2xl mx-auto mb-10 opacity-0 animate-fade-up" style="animation-delay: 1s;">
       {t.hero.description}
     </p>
 
     <!-- CTAs -->
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-up" style="animation-delay: 1.2s;">
-      <a href={lang === 'es' ? '/portafolio' : '/en/portfolio'} class="btn-dorado">
+      <a href={`/${lang}/portfolio`} class="btn-dorado">
         {t.hero.cta1}
       </a>
-      <a href={lang === 'es' ? '/contacto' : '/en/contact'} class="btn-dorado-outline">
+      <a href={`/${lang}/contact`} class="btn-dorado-outline">
         {t.hero.cta2}
       </a>
     </div>
@@ -62,34 +62,41 @@ const t = getTranslations(lang);
   <!-- Scroll indicator -->
   <div class="absolute bottom-16 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in" style="animation-delay: 1.8s;">
     <div class="flex flex-col items-center gap-2">
-      <span class="text-gris-claro text-xs tracking-widest uppercase">{t.hero.scroll}</span>
+      <span class="text-blanco/70 text-xs tracking-widest uppercase">{t.hero.scroll}</span>
       <div class="w-px h-12 bg-gradient-to-b from-dorado to-transparent animate-pulse"></div>
     </div>
   </div>
 
   <!-- Marquee Text -->
   <div class="absolute bottom-0 left-0 right-0 py-3 border-t border-gris-borde/30 overflow-hidden">
-    <div class="marquee-content whitespace-nowrap text-gris-claro/40 text-xs tracking-[0.3em] uppercase font-serif">
-      <span>ARQUITECTURA</span>
-      <span class="mx-6 text-dorado/60">✦</span>
-      <span>DISEÑO DE INTERIORES</span>
-      <span class="mx-6 text-dorado/60">✦</span>
-      <span>REMODELACIÓN</span>
-      <span class="mx-6 text-dorado/60">✦</span>
-      <span>DECORACIÓN</span>
-      <span class="mx-6 text-dorado/60">✦</span>
-      <span>ACABADOS</span>
-      <span class="mx-6 text-dorado/60">✦</span>
-      <span>ARQUITECTURA</span>
-      <span class="mx-6 text-dorado/60">✦</span>
-      <span>DISEÑO DE INTERIORES</span>
-      <span class="mx-6 text-dorado/60">✦</span>
-      <span>REMODELACIÓN</span>
-      <span class="mx-6 text-dorado/60">✦</span>
-      <span>DECORACIÓN</span>
-      <span class="mx-6 text-dorado/60">✦</span>
-      <span>ACABADOS</span>
-      <span class="mx-6 text-dorado/60">✦</span>
+    <div class="marquee-content whitespace-nowrap text-blanco/50 text-xs tracking-[0.3em] uppercase font-serif">
+      {lang === 'es' ? (
+        <>
+          <span>ARQUITECTURA</span><span class="mx-6 text-dorado/60">✦</span>
+          <span>DISEÑO DE INTERIORES</span><span class="mx-6 text-dorado/60">✦</span>
+          <span>REMODELACIÓN</span><span class="mx-6 text-dorado/60">✦</span>
+          <span>DECORACIÓN</span><span class="mx-6 text-dorado/60">✦</span>
+          <span>ACABADOS</span><span class="mx-6 text-dorado/60">✦</span>
+          <span>ARQUITECTURA</span><span class="mx-6 text-dorado/60">✦</span>
+          <span>DISEÑO DE INTERIORES</span><span class="mx-6 text-dorado/60">✦</span>
+          <span>REMODELACIÓN</span><span class="mx-6 text-dorado/60">✦</span>
+          <span>DECORACIÓN</span><span class="mx-6 text-dorado/60">✦</span>
+          <span>ACABADOS</span><span class="mx-6 text-dorado/60">✦</span>
+        </>
+      ) : (
+        <>
+          <span>ARCHITECTURE</span><span class="mx-6 text-dorado/60">✦</span>
+          <span>INTERIOR DESIGN</span><span class="mx-6 text-dorado/60">✦</span>
+          <span>REMODELING</span><span class="mx-6 text-dorado/60">✦</span>
+          <span>DECORATION</span><span class="mx-6 text-dorado/60">✦</span>
+          <span>FINISHES</span><span class="mx-6 text-dorado/60">✦</span>
+          <span>ARCHITECTURE</span><span class="mx-6 text-dorado/60">✦</span>
+          <span>INTERIOR DESIGN</span><span class="mx-6 text-dorado/60">✦</span>
+          <span>REMODELING</span><span class="mx-6 text-dorado/60">✦</span>
+          <span>DECORATION</span><span class="mx-6 text-dorado/60">✦</span>
+          <span>FINISHES</span><span class="mx-6 text-dorado/60">✦</span>
+        </>
+      )}
     </div>
   </div>
 </section>

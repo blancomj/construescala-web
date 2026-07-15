@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Hero from '../../components/Hero.astro';
+import ServicesSection from '../../components/ServicesSection.astro';
+import ProjectsSection from '../../components/ProjectsSection.astro';
+import ValuesSection from '../../components/ValuesSection.astro';
+import CtaSection from '../../components/CtaSection.astro';
+import Footer from '../../components/Footer.astro';
+import { getTranslations, type Language } from '../../i18n/index.ts';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const t = getTranslations(lang as Language);
+
+const titles: Record<string, string> = {
+  es: 'CONSTRUESCALA - Soluciones Integrales en Acabados y Diseño de Interiores',
+  en: 'CONSTRUESCALA - Comprehensive Solutions in Finishes and Interior Design',
+};
+---
+
+<Layout title={titles[lang]} lang={lang as Language}>
+  <Navbar lang={lang as Language} />
+  <Hero lang={lang as Language} />
+  <ServicesSection lang={lang as Language} />
+  <ValuesSection lang={lang as Language} />
+  <ProjectsSection lang={lang as Language} />
+  <CtaSection lang={lang as Language} />
+  <Footer lang={lang as Language} />
+</Layout>

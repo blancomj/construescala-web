@@ -20,13 +20,13 @@ export function getAlternateLangUrl(url: URL, currentLang: Language): string {
   const pathname = url.pathname;
 
   if (currentLang === 'es') {
-    // Spanish to English
-    if (pathname === '/') return '/en/';
-    return `/en${pathname}`;
+    // Spanish to English: /es/about -> /en/about
+    if (pathname === '/es/' || pathname === '/es') return '/en/';
+    return pathname.replace('/es/', '/en/').replace('/es', '/en');
   } else {
-    // English to Spanish
-    if (pathname === '/en/') return '/';
-    return pathname.replace('/en', '');
+    // English to Spanish: /en/about -> /es/about
+    if (pathname === '/en/' || pathname === '/en') return '/es/';
+    return pathname.replace('/en/', '/es/').replace('/en', '/es');
   }
 }
 
@@ -35,5 +35,6 @@ export function getLocalizedPath(path: string, lang: Language): string {
     if (path === '/') return '/en/';
     return `/en${path}`;
   }
-  return path;
+  if (path === '/') return '/es/';
+  return `/es${path}`;
 }

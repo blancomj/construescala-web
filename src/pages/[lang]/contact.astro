@@ -2,20 +2,46 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
-import { getTranslations } from '../../i18n/index.ts';
+import ContactForm from '../../components/ContactForm.astro';
+import { getTranslations, type Language } from '../../i18n/index.ts';
 
-const t = getTranslations('en');
+export const prerender = true;
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const t = getTranslations(lang as Language);
+
+const titles: Record<string, string> = {
+  es: 'Contacto - CONSTRUESCALA',
+  en: 'Contact - CONSTRUESCALA',
+};
+
+const altTexts: Record<string, string> = {
+  es: 'Contacto',
+  en: 'Contact',
+};
+
+const mapTitles: Record<string, string> = {
+  es: 'Ubicación CONSTRUESCALA',
+  en: 'CONSTRUESCALA Location',
+};
 ---
 
-<Layout title="Contact - CONSTRUESCALA" lang="en">
-  <Navbar lang="en" />
+<Layout title={titles[lang]} lang={lang as Language}>
+  <Navbar lang={lang as Language} />
 
   <!-- Hero Banner -->
   <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0">
       <img
         src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1920&q=80&auto=format&fit=crop"
-        alt="Contact"
+        alt={altTexts[lang]}
         class="w-full h-full object-cover"
       />
       <div class="absolute inset-0 bg-negro/80"></div>
@@ -40,78 +66,7 @@ const t = getTranslations('en');
           </h2>
           <div class="w-16 h-0.5 bg-dorado mb-8"></div>
 
-          <form
-            action="https://formspree.io/f/XYOUR_ID_AQUI"
-            method="POST"
-            class="space-y-6"
-            id="contact-form-en"
-          >
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div>
-                <label for="nombre-en" class="block text-blanco text-sm mb-2">{t.contactPage.name} *</label>
-                <input
-                  type="text"
-                  id="nombre-en"
-                  name="name"
-                  required
-                  class="w-full px-4 py-3 bg-negro-suave border border-gris-borde text-blanco placeholder-gris-texto focus:border-dorado focus:outline-none transition-colors duration-300"
-                  placeholder={t.contactPage.name}
-                />
-              </div>
-              <div>
-                <label for="telefono-en" class="block text-blanco text-sm mb-2">{t.contactPage.phone}</label>
-                <input
-                  type="tel"
-                  id="telefono-en"
-                  name="phone"
-                  class="w-full px-4 py-3 bg-negro-suave border border-gris-borde text-blanco placeholder-gris-texto focus:border-dorado focus:outline-none transition-colors duration-300"
-                  placeholder="+57 300 000 0000"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label for="email-en" class="block text-blanco text-sm mb-2">{t.contactPage.email} *</label>
-              <input
-                type="email"
-                id="email-en"
-                name="email"
-                required
-                class="w-full px-4 py-3 bg-negro-suave border border-gris-borde text-blanco placeholder-gris-texto focus:border-dorado focus:outline-none transition-colors duration-300"
-                placeholder="your@email.com"
-              />
-            </div>
-
-            <div>
-              <label for="servicio-en" class="block text-blanco text-sm mb-2">{t.contactPage.projectType} *</label>
-              <select
-                id="servicio-en"
-                name="service"
-                required
-                class="w-full px-4 py-3 bg-negro-suave border border-gris-borde text-blanco focus:border-dorado focus:outline-none transition-colors duration-300 appearance-none cursor-pointer"
-              >
-                {t.contactPage.projectOptions.map(option => (
-                  <option value={option.value}>{option.label}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label for="mensaje-en" class="block text-blanco text-sm mb-2">{t.contactPage.message} *</label>
-              <textarea
-                id="mensaje-en"
-                name="message"
-                rows="5"
-                required
-                class="w-full px-4 py-3 bg-negro-suave border border-gris-borde text-blanco placeholder-gris-texto focus:border-dorado focus:outline-none transition-colors duration-300 resize-none"
-                placeholder={t.contactPage.messagePlaceholder}
-              ></textarea>
-            </div>
-
-            <button type="submit" class="btn-dorado w-full sm:w-auto">
-              {t.contactPage.submit}
-            </button>
-          </form>
+          <ContactForm lang={lang as Language} />
         </div>
 
         <!-- Contact Info -->
@@ -167,7 +122,7 @@ const t = getTranslations('en');
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              title="CONSTRUESCALA Location"
+              title={mapTitles[lang]}
             ></iframe>
           </div>
         </div>
@@ -175,53 +130,5 @@ const t = getTranslations('en');
     </div>
   </section>
 
-  <Footer lang="en" />
+  <Footer lang={lang as Language} />
 </Layout>
-
-<script>
-  const form = document.getElementById('contact-form-en') as HTMLFormElement;
-  
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const formData = new FormData(form);
-    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-    const originalText = submitBtn.textContent;
-    
-    submitBtn.textContent = 'Sending...';
-    submitBtn.disabled = true;
-    
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json',
-        },
-      });
-      
-      if (response.ok) {
-        form.reset();
-        submitBtn.textContent = 'Message Sent!';
-        submitBtn.classList.add('bg-green-600');
-        
-        setTimeout(() => {
-          submitBtn.textContent = originalText;
-          submitBtn.classList.remove('bg-green-600');
-          submitBtn.disabled = false;
-        }, 3000);
-      } else {
-        throw new Error('Error sending');
-      }
-    } catch (error) {
-      submitBtn.textContent = 'Error. Try again';
-      submitBtn.classList.add('bg-red-600');
-      
-      setTimeout(() => {
-        submitBtn.textContent = originalText;
-        submitBtn.classList.remove('bg-red-600');
-        submitBtn.disabled = false;
-      }, 3000);
-    }
-  });
-</script>
