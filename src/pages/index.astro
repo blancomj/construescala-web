@@ -6,13 +6,16 @@ import ServicesSection from '../components/ServicesSection.astro';
 import ProjectsSection from '../components/ProjectsSection.astro';
 import CtaSection from '../components/CtaSection.astro';
 import Footer from '../components/Footer.astro';
+import { getTranslations } from '../i18n/index.ts';
+
+const t = getTranslations('es');
 ---
 
-<Layout title="CONSTRUESCALA - Soluciones Integrales en Acabados y Diseño de Interiores">
-  <Navbar />
-  <Hero />
-  <ServicesSection />
-  <ProjectsSection />
-  <CtaSection />
-  <Footer />
+<Layout title="CONSTRUESCALA - Soluciones Integrales en Acabados y Diseño de Interiores" lang="es">
+  <Navbar lang="es" />
+  <Hero lang="es" />
+  <ServicesSection lang="es" />
+  <ProjectsSection lang="es" />
+  <CtaSection lang="es" />
+  <Footer lang="es" />
 </Layout>

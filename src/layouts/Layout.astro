@@ -1,14 +1,19 @@
 ---
+import type { Language } from '../i18n/index.ts';
+import { getTranslations } from '../i18n/index.ts';
+
 interface Props {
   title: string;
   description?: string;
+  lang?: Language;
 }
 
-const { title, description = "CONSTRUESCALA - Soluciones integrales en acabados, remodelación, diseño y decoración de interiores" } = Astro.props;
+const { title, description = "CONSTRUESCALA - Comprehensive solutions in finishes, remodeling, interior design and decoration", lang = 'es' } = Astro.props;
+const t = getTranslations(lang);
 ---
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang={lang === 'es' ? 'es' : 'en'}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,11 +26,58 @@ const { title, description = "CONSTRUESCALA - Soluciones integrales en acabados,
   <title>{title}</title>
 </head>
 <body class="min-h-screen">
+  <!-- Page Loader -->
+  <div id="page-loader" class="page-loader">
+    <div class="loader-content">
+      <svg class="loader-logo" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="loader-path" d="M10 45 L50 15 L90 45 L130 15 L170 45" stroke="#c9a96e" stroke-width="2" fill="none"/>
+        <path class="loader-path" d="M30 45 L70 15 L110 45 L150 15 L190 45" stroke="#c9a96e" stroke-width="1" fill="none" opacity="0.5"/>
+      </svg>
+      <div class="loader-text">CONSTRUESCALA</div>
+      <div class="loader-bar">
+        <div class="loader-progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Transition Overlay -->
+  <div id="page-transition" class="page-transition">
+    <div class="transition-panel transition-panel-1"></div>
+    <div class="transition-panel transition-panel-2"></div>
+    <div class="transition-panel transition-panel-3"></div>
+  </div>
+
   <slot />
 
   <script>
-    // Scroll Reveal Observer
     document.addEventListener('DOMContentLoaded', () => {
+      // Page Loader Animation
+      const loader = document.getElementById('page-loader');
+      const loaderPaths = document.querySelectorAll('.loader-path');
+      const loaderProgress = document.querySelector('.loader-progress');
+      
+      // Animate SVG paths
+      loaderPaths.forEach((path, i) => {
+        const pathLength = (path as SVGPathElement).getTotalLength();
+        (path as SVGPathElement).style.strokeDasharray = pathLength;
+        (path as SVGPathElement).style.strokeDashoffset = String(pathLength);
+        (path as SVGPathElement).style.animation = `drawPath 1.5s ease forwards ${i * 0.2}s`;
+      });
+
+      // Animate progress bar
+      if (loaderProgress) {
+        (loaderProgress as HTMLElement).style.animation = 'loadProgress 1.8s ease forwards';
+      }
+
+      // Hide loader after animation
+      setTimeout(() => {
+        if (loader) {
+          loader.classList.add('hidden');
+          document.body.style.overflow = 'auto';
+        }
+      }, 2000);
+
+      // Scroll Reveal Observer - Enhanced
       const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -35,15 +87,38 @@ const { title, description = "CONSTRUESCALA - Soluciones integrales en acabados,
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            
+            // Stagger children animation
+            const children = entry.target.querySelectorAll('[data-reveal-child]');
+            children.forEach((child, i) => {
+              (child as HTMLElement).style.transitionDelay = `${i * 0.1}s`;
+              child.classList.add('visible');
+            });
           }
         });
       }, observerOptions);
 
-      document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right').forEach(el => {
+      document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .reveal-text, .reveal-image').forEach(el => {
         observer.observe(el);
       });
 
-      // Parallax effect
+      // Text Reveal Animation - Split text into lines
+      const revealTextElements = document.querySelectorAll('.split-text');
+      revealTextElements.forEach(el => {
+        const text = el.textContent || '';
+        const words = text.split(' ');
+        el.innerHTML = '';
+        
+        words.forEach((word, i) => {
+          const span = document.createElement('span');
+          span.className = 'word';
+          span.style.transitionDelay = `${i * 0.05}s`;
+          span.textContent = word + ' ';
+          el.appendChild(span);
+        });
+      });
+
+      // Parallax effect - Enhanced
       const parallaxElements = document.querySelectorAll('.parallax-img');
       
       window.addEventListener('scroll', () => {
@@ -51,40 +126,83 @@ const { title, description = "CONSTRUESCALA - Soluciones integrales en acabados,
         
         parallaxElements.forEach(el => {
           const speed = 0.3;
-          const rect = el.getBoundingClientRect();
+          const container = el.closest('.parallax-container');
+          if (!container) return;
+          
+          const rect = container.getBoundingClientRect();
           const visible = rect.top < window.innerHeight && rect.bottom > 0;
           
           if (visible) {
-            const yPos = -(scrollY - el.closest('.parallax-container').offsetTop) * speed;
-            el.style.transform = `translateY(${yPos}px)`;
+            const yPos = -(scrollY - container.offsetTop) * speed;
+            (el as HTMLElement).style.transform = `translateY(${yPos}px) scale(1.1)`;
           }
         });
       });
 
-      // Navbar scroll effect
-      const navbar = document.getElementById('navbar');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-          navbar?.classList.add('navbar-scrolled');
-        } else {
-          navbar?.classList.remove('navbar-scrolled');
-        }
-      });
-
-      // Mobile menu toggle
-      const menuBtn = document.getElementById('menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const menuLinks = mobileMenu?.querySelectorAll('a');
+      // Page Transition on Link Click
+      const transition = document.getElementById('page-transition');
+      const links = document.querySelectorAll('a[href]:not([target="_blank"]):not([href^="#"]):not([href^="mailto"]):not([href^="tel"])');
       
-      menuBtn?.addEventListener('click', () => {
-        mobileMenu?.classList.toggle('hidden');
-        mobileMenu?.classList.toggle('flex');
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = (link as HTMLAnchorElement).getAttribute('href');
+          if (href && !href.startsWith('http') && href !== window.location.pathname) {
+            e.preventDefault();
+            
+            if (transition) {
+              transition.classList.add('active');
+              
+              setTimeout(() => {
+                window.location.href = href;
+              }, 600);
+            }
+          }
+        });
       });
 
-      menuLinks?.forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu?.classList.add('hidden');
-          mobileMenu?.classList.remove('flex');
+      // Magnetic Effect on Buttons
+      const magneticElements = document.querySelectorAll('.magnetic');
+      magneticElements.forEach(el => {
+        el.addEventListener('mousemove', (e) => {
+          const rect = (el as HTMLElement).getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          
+          (el as HTMLElement).style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+        
+        el.addEventListener('mouseleave', () => {
+          (el as HTMLElement).style.transform = 'translate(0, 0)';
+        });
+      });
+
+      // Custom Cursor Effect
+      const cursor = document.createElement('div');
+      cursor.className = 'custom-cursor';
+      document.body.appendChild(cursor);
+      
+      const cursorDot = document.createElement('div');
+      cursorDot.className = 'cursor-dot';
+      document.body.appendChild(cursorDot);
+
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = `${e.clientX}px`;
+        cursor.style.top = `${e.clientY}px`;
+        cursorDot.style.left = `${e.clientX}px`;
+        cursorDot.style.top = `${e.clientY}px`;
+      });
+
+      // Cursor hover effect on links and buttons
+      const interactiveElements = document.querySelectorAll('a, button, .interactive');
+      interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          cursor.classList.add('cursor-hover');
+          cursorDot.classList.add('cursor-hover');
+        });
+        
+        el.addEventListener('mouseleave', () => {
+          cursor.classList.remove('cursor-hover');
+          cursorDot.classList.remove('cursor-hover');
         });
       });
     });

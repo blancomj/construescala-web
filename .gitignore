@@ -17,3 +17,6 @@ dist/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Ignore local design assets
+NEW PORTAFOLIO DE SERVICIO.pdf

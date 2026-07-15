@@ -1,0 +1,222 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "contact": "Contact",
+    "cta": "Contact Us"
+  },
+  "hero": {
+    "subtitle": "Satisfaction & excellence",
+    "description": "Comprehensive solutions in finishes, remodeling, interior design and decoration",
+    "cta1": "View Projects",
+    "cta2": "Contact Us",
+    "scroll": "Scroll"
+  },
+  "services": {
+    "sectionTitle": "Our Services",
+    "heading": "We transform",
+    "headingHighlight": "spaces",
+    "subtitle": "We offer comprehensive solutions with the highest standards of quality and efficiency",
+    "moreInfo": "More information",
+    "items": [
+      {
+        "number": "01",
+        "title": "Architectural Design",
+        "description": "We generate proposals and ideas for the creation and realization of physical spaces, integrating geometric-spatial, hygienic-construction and formal aesthetic factors."
+      },
+      {
+        "number": "02",
+        "title": "Wood & Ambience",
+        "description": "We develop and implement wood projects with a functional and aesthetic approach, executing from structures to custom finishes."
+      },
+      {
+        "number": "03",
+        "title": "Interior Design",
+        "description": "We offer interior design services with a technical approach, accompanied by the comprehensive execution of the project. Residential and commercial solutions."
+      }
+    ]
+  },
+  "projects": {
+    "sectionTitle": "Portfolio",
+    "heading": "Featured",
+    "headingHighlight": "projects",
+    "viewAll": "View all",
+    "items": [
+      {
+        "title": "Monte Verde Farm House",
+        "location": "El Retiro, Antioquia",
+        "category": "Renovation",
+        "date": "May - Aug 2024",
+        "description": "Partial renovation focused on renewing floors and wall finishes, integrating natural materials and adding warmth to the space."
+      },
+      {
+        "title": "Crepes Waflex Restaurant",
+        "location": "Bocagrande, Cartagena",
+        "category": "Remodeling",
+        "date": "Oct - Dec 2024",
+        "description": "Installation of checkerboard mosaic floor with distinctive aesthetic finish, resistant to commercial traffic."
+      },
+      {
+        "title": "Apt. 501 Miró Building",
+        "location": "Poblado, Medellín",
+        "category": "Interior Design",
+        "date": "Feb - Apr 2024",
+        "description": "Integral remodeling with space modernization, finish renewal and incorporation of fixed and mobile furniture."
+      }
+    ]
+  },
+  "cta": {
+    "heading": "Ready to start?",
+    "title": "Let's transform your",
+    "titleHighlight": "space",
+    "description": "Contact us today and let's make your design and remodeling project a reality with the highest quality standards",
+    "cta1": "Request Quote",
+    "cta2": "WhatsApp"
+  },
+  "about": {
+    "title": "About Us",
+    "heading": "About",
+    "headingHighlight": "Our Company",
+    "whoWeAre": "Who We Are",
+    "subtitle": "Experts in",
+    "subtitleHighlight": "quality",
+    "description1": "We are a versatile and innovative company in the construction sector, managing projects and strategic solutions for private institutions. We have a team of highly qualified professionals and experts at the service of our projects.",
+    "description2": "Our work translates into suitability, efficacy and quality for our clients, guaranteeing high standards in every project we develop.",
+    "stats": [
+      { "number": "5+", "label": "Years of Experience" },
+      { "number": "50+", "label": "Projects Completed" },
+      { "number": "100%", "label": "Satisfaction" }
+    ],
+    "mission": "Mission",
+    "missionText": "At CONSTRUESCALA we specialize in offering comprehensive solutions in finishes for construction projects, guaranteeing high standards of quality, compliance and efficiency. We are committed to providing adequate infrastructure for the work environment, as well as the technological, logistical and human resources necessary to ensure an agile, safe service aligned with each client's needs.",
+    "vision": "Vision",
+    "visionText": "To be a reliable and recognized company for quality in finishes, building a solid reputation through strategic alliances and professional services, with the goal of developing our own projects with excellent market projection in the medium term.",
+    "teamTitle": "Our Team",
+    "teamSubtitle": "Board of",
+    "teamHighlight": "Partners",
+    "orgTitle": "Structure",
+    "orgSubtitle": "Organization",
+    "orgHighlight": "Chart",
+    "team": [
+      { "name": "Rubiel Rodríguez Arango", "role": "General Manager", "initials": "RR" },
+      { "name": "Jerika Escala Marcano", "role": "Administrative Director", "initials": "JE" },
+      { "name": "Angelica Mendoza Gómez", "role": "Projects Director", "initials": "AM" },
+      { "name": "Hayroll Escala Marcano", "role": "Operations Director", "initials": "HA" },
+      { "name": "Haroll Escala Marcano", "role": "Commercial Director", "initials": "HR" }
+    ]
+  },
+  "servicesPage": {
+    "title": "Services",
+    "heading": "Our",
+    "headingHighlight": "Services",
+    "cta": "Request Quote",
+    "ctaSection": {
+      "heading": "Do you have a project in mind?",
+      "description": "Contact us to discuss your ideas and receive a personalized quote",
+      "cta": "Contact Us Now"
+    },
+    "items": [
+      {
+        "number": "01",
+        "title": "Architectural Design",
+        "subtitle": "We create spaces that inspire",
+        "description": "Architectural design, a discipline whose purpose is to generate proposals and ideas for the creation and realization of physical spaces framed within architecture. At this scale of design, geometric-spatial, hygienic-construction and formal aesthetic factors intervene.",
+        "details": ["Structural design", "Interior design", "Lighting design", "Garden design", "Furniture design"]
+      },
+      {
+        "number": "02",
+        "title": "Wood & Ambience",
+        "subtitle": "Comprehensive wood solutions",
+        "description": "We develop and implement wood projects with a functional and aesthetic approach, adapted to each space. We execute from structures to custom finishes, integrating specialized carpentry techniques and interior design criteria.",
+        "details": ["Wood structures", "Custom finishes", "Specialized carpentry", "Spatial ambience", "Comprehensive solutions"]
+      },
+      {
+        "number": "03",
+        "title": "Residential & Commercial Interior Design",
+        "subtitle": "Interior design with technical approach",
+        "description": "We offer interior design services with a technical approach, accompanied by the comprehensive execution of the project. We specialize in solutions adapted to space needs, meeting quality, functionality and visual coherence standards.",
+        "details": ["Residential design", "Commercial design", "Integral execution", "Fixed and mobile furniture", "LED lighting"]
+      }
+    ]
+  },
+  "portfolioPage": {
+    "title": "Portfolio",
+    "heading": "Our",
+    "headingHighlight": "Projects",
+    "cta": "Want to be our next project?",
+    "ctaDescription": "Tell us your idea and let's make a space that exceeds your expectations a reality",
+    "ctaButton": "Contact Us",
+    "execution": "Execution",
+    "result": "Result",
+    "items": [
+      {
+        "title": "Monte Verde Farm House Renovation",
+        "location": "El Retiro, Antioquia",
+        "category": "Renovation",
+        "dates": "05/05/2024 - 08/01/2024",
+        "description": "Partial renovation focused on renewing floors and wall finishes, with the objective of integrating natural materials and adding warmth to the space.",
+        "details": ["Installation of ceramic simulating natural stone as new floor covering", "Application of textured finish on interior walls", "Rustic and harmonious aesthetic with the natural environment"],
+        "result": "Interior spaces with greater character, warmth and connection with the environment, through the use of noble materials and artisanal finishes."
+      },
+      {
+        "title": "Mosaic Floor Installation",
+        "location": "Bocagrande, Cartagena",
+        "category": "Remodeling",
+        "dates": "10/12/2024 - 12/20/2024",
+        "description": "Replacement of the existing floor in the restaurant through controlled demolition and subsequent installation of checkerboard mosaic floor.",
+        "details": ["Demolition of existing floor", "Preparation and leveling of the base surface", "Supply and installation of checkerboard model mosaic", "Joint sealing and final cleaning"],
+        "result": "Renovated floor with distinctive aesthetic finish, resistant to commercial traffic and in line with the restaurant's visual identity."
+      },
+      {
+        "title": "Remodeling and Furniture Reform",
+        "location": "Poblado, Medellín",
+        "category": "Interior Design",
+        "dates": "02/03/2024 - 04/17/2024",
+        "description": "Integral apartment remodeling aimed at modernizing spaces, renewing finishes and incorporating fixed and mobile furniture.",
+        "details": ["Minor demolitions and adaptations", "Renovation of electrical and hydraulic installations", "Design and installation of fixed furniture (kitchen, closets, bathrooms)", "Optimization of artificial lighting with LED system"],
+        "result": "Renovated, functional and updated space, with improvements in comfort, aesthetics and real estate value."
+      }
+    ]
+  },
+  "contactPage": {
+    "title": "Contact",
+    "heading": "Let's talk about your",
+    "headingHighlight": "Project",
+    "formTitle": "Write to us",
+    "formSubtitle": "Request your",
+    "formHighlight": "Quote",
+    "name": "Full Name",
+    "phone": "Phone",
+    "email": "Email",
+    "projectType": "Project Type",
+    "projectOptions": [
+      { "value": "", "label": "Select an option" },
+      { "value": "remodelacion", "label": "Remodeling" },
+      { "value": "diseno", "label": "Architectural Design" },
+      { "value": "interiorismo", "label": "Interior Design" },
+      { "value": "madera", "label": "Wood & Ambience" },
+      { "value": "otro", "label": "Other" }
+    ],
+    "message": "Message",
+    "messagePlaceholder": "Tell us about your project...",
+    "submit": "Send Message",
+    "sending": "Sending...",
+    "sent": "Message Sent!",
+    "error": "Error. Try again",
+    "infoTitle": "Information",
+    "infoSubtitle": "Contact",
+    "infoHighlight": "Details",
+    "address": "Address",
+    "emails": "Emails",
+    "whatsapp": "WhatsApp"
+  },
+  "footer": {
+    "description": "Comprehensive solutions in finishes for construction projects. Guaranteeing high standards of quality, compliance and efficiency.",
+    "links": "Links",
+    "contact": "Contact",
+    "copyright": "All rights reserved.",
+    "motto": "Satisfaction & excellence"
+  }
+}

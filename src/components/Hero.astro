@@ -1,4 +1,13 @@
 ---
+import type { Language } from '../i18n/index.ts';
+import { getTranslations } from '../i18n/index.ts';
+
+interface Props {
+  lang?: Language;
+}
+
+const { lang = 'es' } = Astro.props;
+const t = getTranslations(lang);
 ---
 
 <section class="relative h-screen flex items-center justify-center overflow-hidden">
@@ -6,7 +15,7 @@
   <div class="absolute inset-0 parallax-container">
     <img
       src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80&auto=format&fit=crop"
-      alt="Interior de lujo"
+      alt={lang === 'es' ? 'Interior de lujo' : 'Luxury interior'}
       class="parallax-img w-full h-[120%] object-cover"
     />
     <!-- Overlay gradient -->
@@ -15,15 +24,8 @@
 
   <!-- Content -->
   <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
-    <!-- Logo mark -->
-    <div class="mb-8 opacity-0 animate-fade-in" style="animation-delay: 0.2s;">
-      <div class="w-16 h-16 border-2 border-dorado mx-auto flex items-center justify-center">
-        <span class="font-serif text-dorado text-3xl font-bold">C</span>
-      </div>
-    </div>
-
     <!-- Title with Clip-Path Reveal -->
-    <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight mb-6">
+    <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight mb-6">
       <span class="inline-block animate-clip-reveal text-blanco">
         CONSTRU
       </span><br class="sm:hidden" /><span class="inline-block animate-clip-reveal text-dorado" style="animation-delay: 0.3s;">
@@ -38,30 +40,56 @@
 
     <!-- Subtitle -->
     <p class="font-serif text-xl sm:text-2xl md:text-3xl text-crema/90 italic mb-4 opacity-0 animate-fade-up" style="animation-delay: 0.8s;">
-      Satisfacción & excelencia
+      {t.hero.subtitle}
     </p>
 
     <!-- Description -->
     <p class="text-gris-claro text-base sm:text-lg max-w-2xl mx-auto mb-10 opacity-0 animate-fade-up" style="animation-delay: 1s;">
-      Soluciones integrales en acabados, remodelación, diseño y decoración de interiores
+      {t.hero.description}
     </p>
 
     <!-- CTAs -->
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-up" style="animation-delay: 1.2s;">
-      <a href="/portafolio" class="btn-dorado">
-        Ver Proyectos
+      <a href={lang === 'es' ? '/portafolio' : '/en/portfolio'} class="btn-dorado">
+        {t.hero.cta1}
       </a>
-      <a href="/contacto" class="btn-dorado-outline">
-        Contáctanos
+      <a href={lang === 'es' ? '/contacto' : '/en/contact'} class="btn-dorado-outline">
+        {t.hero.cta2}
       </a>
     </div>
   </div>
 
   <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in" style="animation-delay: 1.8s;">
+  <div class="absolute bottom-16 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in" style="animation-delay: 1.8s;">
     <div class="flex flex-col items-center gap-2">
-      <span class="text-gris-claro text-xs tracking-widest uppercase">Scroll</span>
-      <div class="w-px h-12 bg-gradient-to-b from-dorado to-transparent"></div>
+      <span class="text-gris-claro text-xs tracking-widest uppercase">{t.hero.scroll}</span>
+      <div class="w-px h-12 bg-gradient-to-b from-dorado to-transparent animate-pulse"></div>
+    </div>
+  </div>
+
+  <!-- Marquee Text -->
+  <div class="absolute bottom-0 left-0 right-0 py-3 border-t border-gris-borde/30 overflow-hidden">
+    <div class="marquee-content whitespace-nowrap text-gris-claro/40 text-xs tracking-[0.3em] uppercase font-serif">
+      <span>ARQUITECTURA</span>
+      <span class="mx-6 text-dorado/60">✦</span>
+      <span>DISEÑO DE INTERIORES</span>
+      <span class="mx-6 text-dorado/60">✦</span>
+      <span>REMODELACIÓN</span>
+      <span class="mx-6 text-dorado/60">✦</span>
+      <span>DECORACIÓN</span>
+      <span class="mx-6 text-dorado/60">✦</span>
+      <span>ACABADOS</span>
+      <span class="mx-6 text-dorado/60">✦</span>
+      <span>ARQUITECTURA</span>
+      <span class="mx-6 text-dorado/60">✦</span>
+      <span>DISEÑO DE INTERIORES</span>
+      <span class="mx-6 text-dorado/60">✦</span>
+      <span>REMODELACIÓN</span>
+      <span class="mx-6 text-dorado/60">✦</span>
+      <span>DECORACIÓN</span>
+      <span class="mx-6 text-dorado/60">✦</span>
+      <span>ACABADOS</span>
+      <span class="mx-6 text-dorado/60">✦</span>
     </div>
   </div>
 </section>

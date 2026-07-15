@@ -1,21 +1,21 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import { getTranslations } from '../i18n/index.ts';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { getTranslations } from '../../i18n/index.ts';
 
-const t = getTranslations('es');
+const t = getTranslations('en');
 ---
 
-<Layout title="Contacto - CONSTRUESCALA" lang="es">
-  <Navbar lang="es" />
+<Layout title="Contact - CONSTRUESCALA" lang="en">
+  <Navbar lang="en" />
 
   <!-- Hero Banner -->
   <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0">
       <img
         src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1920&q=80&auto=format&fit=crop"
-        alt="Contacto"
+        alt="Contact"
         class="w-full h-full object-cover"
       />
       <div class="absolute inset-0 bg-negro/80"></div>
@@ -44,14 +44,14 @@ const t = getTranslations('es');
             action="https://formspree.io/f/XYOUR_ID_AQUI"
             method="POST"
             class="space-y-6"
-            id="contact-form-es"
+            id="contact-form-en"
           >
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <label for="nombre-es" class="block text-blanco text-sm mb-2">{t.contactPage.name} *</label>
+                <label for="nombre-en" class="block text-blanco text-sm mb-2">{t.contactPage.name} *</label>
                 <input
                   type="text"
-                  id="nombre-es"
+                  id="nombre-en"
                   name="name"
                   required
                   class="w-full px-4 py-3 bg-negro-suave border border-gris-borde text-blanco placeholder-gris-texto focus:border-dorado focus:outline-none transition-colors duration-300"
@@ -59,10 +59,10 @@ const t = getTranslations('es');
                 />
               </div>
               <div>
-                <label for="telefono-es" class="block text-blanco text-sm mb-2">{t.contactPage.phone}</label>
+                <label for="telefono-en" class="block text-blanco text-sm mb-2">{t.contactPage.phone}</label>
                 <input
                   type="tel"
-                  id="telefono-es"
+                  id="telefono-en"
                   name="phone"
                   class="w-full px-4 py-3 bg-negro-suave border border-gris-borde text-blanco placeholder-gris-texto focus:border-dorado focus:outline-none transition-colors duration-300"
                   placeholder="+57 300 000 0000"
@@ -71,21 +71,21 @@ const t = getTranslations('es');
             </div>
 
             <div>
-              <label for="email-es" class="block text-blanco text-sm mb-2">{t.contactPage.email} *</label>
+              <label for="email-en" class="block text-blanco text-sm mb-2">{t.contactPage.email} *</label>
               <input
                 type="email"
-                id="email-es"
+                id="email-en"
                 name="email"
                 required
                 class="w-full px-4 py-3 bg-negro-suave border border-gris-borde text-blanco placeholder-gris-texto focus:border-dorado focus:outline-none transition-colors duration-300"
-                placeholder="tu@email.com"
+                placeholder="your@email.com"
               />
             </div>
 
             <div>
-              <label for="servicio-es" class="block text-blanco text-sm mb-2">{t.contactPage.projectType} *</label>
+              <label for="servicio-en" class="block text-blanco text-sm mb-2">{t.contactPage.projectType} *</label>
               <select
-                id="servicio-es"
+                id="servicio-en"
                 name="service"
                 required
                 class="w-full px-4 py-3 bg-negro-suave border border-gris-borde text-blanco focus:border-dorado focus:outline-none transition-colors duration-300 appearance-none cursor-pointer"
@@ -97,9 +97,9 @@ const t = getTranslations('es');
             </div>
 
             <div>
-              <label for="mensaje-es" class="block text-blanco text-sm mb-2">{t.contactPage.message} *</label>
+              <label for="mensaje-en" class="block text-blanco text-sm mb-2">{t.contactPage.message} *</label>
               <textarea
-                id="mensaje-es"
+                id="mensaje-en"
                 name="message"
                 rows="5"
                 required
@@ -167,7 +167,7 @@ const t = getTranslations('es');
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              title="Ubicación CONSTRUESCALA"
+              title="CONSTRUESCALA Location"
             ></iframe>
           </div>
         </div>
@@ -175,11 +175,11 @@ const t = getTranslations('es');
     </div>
   </section>
 
-  <Footer lang="es" />
+  <Footer lang="en" />
 </Layout>
 
 <script>
-  const form = document.getElementById('contact-form-es') as HTMLFormElement;
+  const form = document.getElementById('contact-form-en') as HTMLFormElement;
   
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -188,7 +188,7 @@ const t = getTranslations('es');
     const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
     const originalText = submitBtn.textContent;
     
-    submitBtn.textContent = 'Enviando...';
+    submitBtn.textContent = 'Sending...';
     submitBtn.disabled = true;
     
     try {
@@ -202,7 +202,7 @@ const t = getTranslations('es');
       
       if (response.ok) {
         form.reset();
-        submitBtn.textContent = '¡Mensaje Enviado!';
+        submitBtn.textContent = 'Message Sent!';
         submitBtn.classList.add('bg-green-600');
         
         setTimeout(() => {
@@ -211,10 +211,10 @@ const t = getTranslations('es');
           submitBtn.disabled = false;
         }, 3000);
       } else {
-        throw new Error('Error en el envío');
+        throw new Error('Error sending');
       }
     } catch (error) {
-      submitBtn.textContent = 'Error. Intenta de nuevo';
+      submitBtn.textContent = 'Error. Try again';
       submitBtn.classList.add('bg-red-600');
       
       setTimeout(() => {

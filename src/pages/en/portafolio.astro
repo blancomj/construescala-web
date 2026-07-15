@@ -1,10 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import { getTranslations } from '../i18n/index.ts';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { getTranslations } from '../../i18n/index.ts';
 
-const t = getTranslations('es');
+const t = getTranslations('en');
 
 const projectImages = [
   'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80&auto=format&fit=crop',
@@ -13,15 +13,15 @@ const projectImages = [
 ];
 ---
 
-<Layout title="Portafolio - CONSTRUESCALA" lang="es">
-  <Navbar lang="es" />
+<Layout title="Portfolio - CONSTRUESCALA" lang="en">
+  <Navbar lang="en" />
 
   <!-- Hero Banner -->
   <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0">
       <img
         src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80&auto=format&fit=crop"
-        alt="Portafolio"
+        alt="Portfolio"
         class="w-full h-full object-cover"
       />
       <div class="absolute inset-0 bg-negro/80"></div>
@@ -40,6 +40,7 @@ const projectImages = [
       <div class="space-y-32">
         {t.portfolioPage.items.map((project, i) => (
           <div class="scroll-reveal">
+            <!-- Project Image with Parallax -->
             <div class="parallax-container aspect-[16/9] lg:aspect-[21/9] overflow-hidden mb-8">
               <img
                 src={projectImages[i]}
@@ -49,6 +50,7 @@ const projectImages = [
               />
             </div>
 
+            <!-- Project Info -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div class="lg:col-span-2">
                 <div class="flex items-center gap-3 mb-4">
@@ -84,6 +86,7 @@ const projectImages = [
               </div>
             </div>
 
+            <!-- Result -->
             <div class="mt-8 p-6 bg-negro-suave border-l-2 border-dorado">
               <h3 class="font-serif text-lg font-semibold text-blanco mb-2">{t.portfolioPage.result}</h3>
               <p class="text-gris-claro leading-relaxed">
@@ -105,11 +108,11 @@ const projectImages = [
       <p class="text-gris-claro text-lg mb-8 max-w-2xl mx-auto">
         {t.portfolioPage.ctaDescription}
       </p>
-      <a href="/contacto" class="btn-dorado">
+      <a href="/en/contact" class="btn-dorado">
         {t.portfolioPage.ctaButton}
       </a>
     </div>
   </section>
 
-  <Footer lang="es" />
+  <Footer lang="en" />
 </Layout>

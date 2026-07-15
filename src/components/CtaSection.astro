@@ -1,33 +1,48 @@
 ---
+import type { Language } from '../i18n/index.ts';
+import { getTranslations } from '../i18n/index.ts';
+
+interface Props {
+  lang?: Language;
+}
+
+const { lang = 'es' } = Astro.props;
+const t = getTranslations(lang);
 ---
 
 <section class="py-24 lg:py-32 relative overflow-hidden">
-  <!-- Background -->
-  <div class="absolute inset-0">
+  <!-- Background with parallax -->
+  <div class="absolute inset-0 parallax-container">
     <img
       src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80&auto=format&fit=crop"
-      alt="Interior elegante"
-      class="w-full h-full object-cover"
+      alt={lang === 'es' ? 'Interior elegante' : 'Elegant interior'}
+      class="w-full h-[120%] object-cover parallax-img"
       loading="lazy"
     />
     <div class="absolute inset-0 bg-negro/85"></div>
   </div>
 
+  <!-- Decorative elements -->
+  <div class="absolute top-10 left-10 w-20 h-20 border border-dorado/20 rotate-45 opacity-50"></div>
+  <div class="absolute bottom-10 right-10 w-32 h-32 border border-dorado/10 rotate-12 opacity-30"></div>
+
   <div class="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center scroll-reveal">
-    <span class="text-dorado text-sm tracking-widest uppercase font-medium">¿Listo para empezar?</span>
+    <span class="text-dorado text-sm tracking-widest uppercase font-medium">{t.cta.heading}</span>
     <h2 class="section-title mt-6 mb-8">
-      Transformemos tu <span class="text-dorado italic">espacio</span>
+      {t.cta.title} <span class="text-dorado italic">{t.cta.titleHighlight}</span>
     </h2>
     <div class="divider-dorado mx-auto mb-8"></div>
     <p class="section-subtitle mx-auto mb-12">
-      Contáctanos hoy y hagamos realidad tu proyecto de diseño y remodelación con los más altos estándares de calidad
+      {t.cta.description}
     </p>
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="/contacto" class="btn-dorado">
-        Solicitar Cotización
+      <a href={lang === 'es' ? '/contacto' : '/en/contact'} class="btn-dorado magnetic relative overflow-hidden group">
+        <span class="relative z-10">{t.cta.cta1}</span>
+        <div class="absolute inset-0 bg-dorado-claro transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
       </a>
-      <a href="https://wa.me/573001234567" target="_blank" rel="noopener" class="btn-dorado-outline">
-        WhatsApp
+      <a href="https://wa.me/573001234567" target="_blank" rel="noopener" class="btn-dorado-outline magnetic relative overflow-hidden group">
+        <span class="relative z-10">{t.cta.cta2}</span>
+        <div class="absolute inset-0 bg-dorado transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
       </a>
     </div>
   </div>

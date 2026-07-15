@@ -1,0 +1,222 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "services": "Servicios",
+    "portfolio": "Portafolio",
+    "contact": "Contacto",
+    "cta": "Contáctanos"
+  },
+  "hero": {
+    "subtitle": "Satisfacción & excelencia",
+    "description": "Soluciones integrales en acabados, remodelación, diseño y decoración de interiores",
+    "cta1": "Ver Proyectos",
+    "cta2": "Contáctanos",
+    "scroll": "Scroll"
+  },
+  "services": {
+    "sectionTitle": "Nuestros Servicios",
+    "heading": "Transformamos",
+    "headingHighlight": "espacios",
+    "subtitle": "Ofrecemos soluciones integrales con los más altos estándares de calidad y eficiencia",
+    "moreInfo": "Más información",
+    "items": [
+      {
+        "number": "01",
+        "title": "Diseño Arquitectónico",
+        "description": "Generamos propuestas e ideas para la creación y realización de espacios físicos, integrando factores geométricos-espaciales, higiénico-constructivos y estéticos formales."
+      },
+      {
+        "number": "02",
+        "title": "Madera & Ambientación",
+        "description": "Desarrollamos e implementamos proyectos en madera con enfoque funcional y estético, ejecutando desde estructuras hasta acabados personalizados."
+      },
+      {
+        "number": "03",
+        "title": "Interiorismo",
+        "description": "Ofrecemos servicios de diseño interior con enfoque técnico, acompañados de la ejecución integral del proyecto. Soluciones residenciales y comerciales."
+      }
+    ]
+  },
+  "projects": {
+    "sectionTitle": "Portafolio",
+    "heading": "Proyectos",
+    "headingHighlight": "destacados",
+    "viewAll": "Ver todos",
+    "items": [
+      {
+        "title": "Casa Finca Monte Verde",
+        "location": "El Retiro, Antioquia",
+        "category": "Reforma",
+        "date": "May - Ago 2024",
+        "description": "Reforma parcial enfocada en la renovación de pisos y acabados murales, integrando materiales naturales y aportando calidez al espacio."
+      },
+      {
+        "title": "Restaurante Crepes Waflex",
+        "location": "Bocagrande, Cartagena",
+        "category": "Remodelación",
+        "date": "Oct - Dic 2024",
+        "description": "Instalación de piso en mosaico tipo ajedrez con acabado estético distintivo, resistente al tráfico comercial."
+      },
+      {
+        "title": "Apto. 501 Edificio Miró",
+        "location": "Poblado, Medellín",
+        "category": "Interiorismo",
+        "date": "Feb - Abr 2024",
+        "description": "Remodelación integral con modernización de espacios, renovación de acabados e incorporación de mobiliario fijo y móvil."
+      }
+    ]
+  },
+  "cta": {
+    "heading": "¿Listo para empezar?",
+    "title": "Transformemos tu",
+    "titleHighlight": "espacio",
+    "description": "Contáctanos hoy y hagamos realidad tu proyecto de diseño y remodelación con los más altos estándares de calidad",
+    "cta1": "Solicitar Cotización",
+    "cta2": "WhatsApp"
+  },
+  "about": {
+    "title": "Nosotros",
+    "heading": "Sobre",
+    "headingHighlight": "Nuestra Empresa",
+    "whoWeAre": "Quiénes Somos",
+    "subtitle": "Expertos en",
+    "subtitleHighlight": "calidad",
+    "description1": "Somos una empresa polifacética e innovadora en el sector de la construcción, la cual gestiona proyectos y soluciones estratégicos para instituciones privadas. Contamos con un equipo de profesionales y expertos altamente calificados al servicio de nuestros proyectos.",
+    "description2": "Nuestro trabajo se traduce en idoneidad, eficacia y calidad para nuestros clientes, garantizando altos estándares en cada proyecto que desarrollamos.",
+    "stats": [
+      { "number": "5+", "label": "Años de Experiencia" },
+      { "number": "50+", "label": "Proyectos Realizados" },
+      { "number": "100%", "label": "Satisfacción" }
+    ],
+    "mission": "Misión",
+    "missionText": "En CONSTRUESCALA nos especializamos en ofrecer soluciones integrales en acabados para proyectos de construcción, garantizando altos estándares de calidad, cumplimiento y eficiencia. Nos comprometemos a proporcionar una infraestructura adecuada al entorno de trabajo, así como los recursos tecnológicos, logísticos y humanos necesarios para asegurar un servicio ágil, seguro y alineado con las necesidades de cada cliente.",
+    "vision": "Visión",
+    "visionText": "Ser una empresa confiable y reconocida por la calidad en acabados, construyendo una reputación sólida a través de alianzas estratégicas y servicios profesionales, con el objetivo de desarrollar en el mediano plazo proyectos propios con excelente proyección en el mercado.",
+    "teamTitle": "Nuestro Equipo",
+    "teamSubtitle": "Junta de",
+    "teamHighlight": "Socios",
+    "orgTitle": "Estructura",
+    "orgSubtitle": "Organigrama",
+    "orgHighlight": "Empresarial",
+    "team": [
+      { "name": "Rubiel Rodríguez Arango", "role": "Gerente General", "initials": "RR" },
+      { "name": "Jerika Escala Marcano", "role": "Directora Administrativa", "initials": "JE" },
+      { "name": "Angelica Mendoza Gómez", "role": "Directora de Proyectos", "initials": "AM" },
+      { "name": "Hayroll Escala Marcano", "role": "Director de Operaciones", "initials": "HA" },
+      { "name": "Haroll Escala Marcano", "role": "Directora Comercial", "initials": "HR" }
+    ]
+  },
+  "servicesPage": {
+    "title": "Servicios",
+    "heading": "Nuestros",
+    "headingHighlight": "Servicios",
+    "cta": "Solicitar Cotización",
+    "ctaSection": {
+      "heading": "¿Tienes un proyecto en mente?",
+      "description": "Contáctanos para discutir tus ideas y recibir una cotización personalizada",
+      "cta": "Contáctanos Ahora"
+    },
+    "items": [
+      {
+        "number": "01",
+        "title": "Diseño Arquitectónico",
+        "subtitle": "Creamos espacios que inspiran",
+        "description": "Diseño arquitectónico, disciplina que tiene por objeto generar propuestas e ideas para la creación y realización de espacios físicos enmarcados dentro de la arquitectura. En esta escala del diseño intervienen factores como los geométricos-espaciales, higiénico-constructivos y estético formales.",
+        "details": ["Diseño estructural", "Diseño de interiores", "Diseño lumínico", "Diseño de jardinería", "Diseño de muebles"]
+      },
+      {
+        "number": "02",
+        "title": "Madera & Ambientación",
+        "subtitle": "Soluciones integrales en madera",
+        "description": "Desarrollamos e implementamos proyectos en madera con enfoque funcional y estético, adaptados a cada espacio. Ejecutamos desde estructuras hasta acabados personalizados, integrando técnicas de carpintería especializada y criterios de diseño interior.",
+        "details": ["Estructuras en madera", "Acabados personalizados", "Carpintería especializada", "Ambientación espacial", "Soluciones integrales"]
+      },
+      {
+        "number": "03",
+        "title": "Interiorismo Residencial y Comercial",
+        "subtitle": "Diseño interior con enfoque técnico",
+        "description": "Ofrecemos servicios de diseño interior con enfoque técnico, acompañados de la ejecución integral del proyecto. Nos especializamos en soluciones adaptadas a las necesidades del espacio, cumpliendo con estándares de calidad, funcionalidad y coherencia visual.",
+        "details": ["Diseño residencial", "Diseño comercial", "Ejecución integral", "Mobiliario fijo y móvil", "Iluminación LED"]
+      }
+    ]
+  },
+  "portfolioPage": {
+    "title": "Portafolio",
+    "heading": "Nuestros",
+    "headingHighlight": "Proyectos",
+    "cta": "¿Quieres ser nuestro próximo proyecto?",
+    "ctaDescription": "Cuéntanos tu idea y hagamos realidad un espacio que supere tus expectativas",
+    "ctaButton": "Contáctanos",
+    "execution": "Ejecución",
+    "result": "Resultado",
+    "items": [
+      {
+        "title": "Reforma Casa Finca Monte Verde",
+        "location": "El Retiro, Antioquia",
+        "category": "Reforma",
+        "dates": "05/05/2024 - 01/08/2024",
+        "description": "Reforma parcial enfocada en la renovación de pisos y acabados murales, con el objetivo de integrar materiales naturales y aportar calidez al espacio.",
+        "details": ["Instalación de cerámica que simula piedra natural como nuevo revestimiento de piso", "Aplicación de acabado texturizado en muros interiores", "Estética rústica y armónica con el entorno natural"],
+        "result": "Espacios interiores con mayor carácter, calidez y conexión con el entorno, mediante el uso de materiales nobles y acabados artesanales."
+      },
+      {
+        "title": "Instalación de Piso en Mosaico",
+        "location": "Bocagrande, Cartagena",
+        "category": "Remodelación",
+        "dates": "12/10/2024 - 20/12/2024",
+        "description": "Reemplazo del piso existente en el restaurante mediante demolición controlada y posterior instalación de piso en mosaico tipo ajedrez.",
+        "details": ["Demolición del piso existente", "Preparación y nivelación de la superficie base", "Suministro e instalación de mosaico modelo ajedrez", "Sellado de juntas y limpieza final"],
+        "result": "Piso renovado con acabado estético distintivo, resistente al tráfico comercial y acorde a la identidad visual del restaurante."
+      },
+      {
+        "title": "Remodelación y Reforma Mobiliaria",
+        "location": "Poblado, Medellín",
+        "category": "Interiorismo",
+        "dates": "03/02/2024 - 17/04/2024",
+        "description": "Remodelación integral del apartamento orientada a la modernización de espacios, renovación de acabados e incorporación de mobiliario fijo y móvil.",
+        "details": ["Demoliciones menores y adecuaciones", "Renovación de instalaciones eléctricas e hidráulicas", "Diseño e instalación de mobiliario fijo (cocina, closets, baños)", "Optimización de iluminación artificial con sistema LED"],
+        "result": "Espacio renovado, funcional y actualizado, con mejoras en confort, estética y valor inmobiliario."
+      }
+    ]
+  },
+  "contactPage": {
+    "title": "Contacto",
+    "heading": "Hablemos de tu",
+    "headingHighlight": "Proyecto",
+    "formTitle": "Escríbenos",
+    "formSubtitle": "Solicita tu",
+    "formHighlight": "Cotización",
+    "name": "Nombre Completo",
+    "phone": "Teléfono",
+    "email": "Correo Electrónico",
+    "projectType": "Tipo de Proyecto",
+    "projectOptions": [
+      { "value": "", "label": "Selecciona una opción" },
+      { "value": "remodelacion", "label": "Remodelación" },
+      { "value": "diseno", "label": "Diseño Arquitectónico" },
+      { "value": "interiorismo", "label": "Interiorismo" },
+      { "value": "madera", "label": "Madera & Ambientación" },
+      { "value": "otro", "label": "Otro" }
+    ],
+    "message": "Mensaje",
+    "messagePlaceholder": "Cuéntanos sobre tu proyecto...",
+    "submit": "Enviar Mensaje",
+    "sending": "Enviando...",
+    "sent": "¡Mensaje Enviado!",
+    "error": "Error. Intenta de nuevo",
+    "infoTitle": "Información",
+    "infoSubtitle": "Datos de",
+    "infoHighlight": "Contacto",
+    "address": "Dirección",
+    "emails": "Correos",
+    "whatsapp": "WhatsApp"
+  },
+  "footer": {
+    "description": "Soluciones integrales en acabados para proyectos de construcción. Garantizando altos estándares de calidad, cumplimiento y eficiencia.",
+    "links": "Enlaces",
+    "contact": "Contacto",
+    "copyright": "Todos los derechos reservados.",
+    "motto": "Satisfacción & excelencia"
+  }
+}

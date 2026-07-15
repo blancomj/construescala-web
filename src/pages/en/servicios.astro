@@ -1,21 +1,21 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import { getTranslations } from '../i18n/index.ts';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { getTranslations } from '../../i18n/index.ts';
 
-const t = getTranslations('es');
+const t = getTranslations('en');
 ---
 
-<Layout title="Servicios - CONSTRUESCALA" lang="es">
-  <Navbar lang="es" />
+<Layout title="Services - CONSTRUESCALA" lang="en">
+  <Navbar lang="en" />
 
   <!-- Hero Banner -->
   <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0">
       <img
         src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1920&q=80&auto=format&fit=crop"
-        alt="Servicios"
+        alt="Services"
         class="w-full h-full object-cover"
       />
       <div class="absolute inset-0 bg-negro/80"></div>
@@ -34,6 +34,7 @@ const t = getTranslations('es');
       <div class="space-y-32">
         {t.servicesPage.items.map((service, i) => (
           <div class={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${i % 2 === 1 ? 'lg:direction-rtl' : ''}`}>
+            <!-- Image -->
             <div class={`${i % 2 === 1 ? 'lg:order-2 scroll-reveal-right' : 'scroll-reveal-left'}`}>
               <div class="relative">
                 <img
@@ -48,6 +49,7 @@ const t = getTranslations('es');
               </div>
             </div>
 
+            <!-- Content -->
             <div class={`${i % 2 === 1 ? 'lg:order-1 scroll-reveal-left' : 'scroll-reveal-right'}`}>
               <span class="text-dorado text-sm tracking-widest uppercase font-medium">{service.subtitle}</span>
               <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-blanco mt-4 mb-6">
@@ -67,7 +69,7 @@ const t = getTranslations('es');
                 ))}
               </ul>
 
-              <a href="/contacto" class="btn-dorado">
+              <a href="/en/contact" class="btn-dorado">
                 {t.servicesPage.cta}
               </a>
             </div>
@@ -86,11 +88,11 @@ const t = getTranslations('es');
       <p class="text-gris-claro text-lg mb-8 max-w-2xl mx-auto">
         {t.servicesPage.ctaSection.description}
       </p>
-      <a href="/contacto" class="btn-dorado">
+      <a href="/en/contact" class="btn-dorado">
         {t.servicesPage.ctaSection.cta}
       </a>
     </div>
   </section>
 
-  <Footer lang="es" />
+  <Footer lang="en" />
 </Layout>

@@ -1,22 +1,33 @@
 ---
+import type { Language } from '../i18n/index.ts';
+import { getTranslations, getLangFromUrl, getAlternateLangUrl } from '../i18n/index.ts';
+
+interface Props {
+  lang?: Language;
+}
+
+const { lang = 'es' } = Astro.props;
+const t = getTranslations(lang);
+const currentPath = Astro.url.pathname;
+
 const navLinks = [
-  { href: '/', label: 'Inicio' },
-  { href: '/nosotros', label: 'Nosotros' },
-  { href: '/servicios', label: 'Servicios' },
-  { href: '/portafolio', label: 'Portafolio' },
-  { href: '/contacto', label: 'Contacto' },
+  { href: lang === 'es' ? '/' : '/en/', label: t.nav.home },
+  { href: lang === 'es' ? '/nosotros' : '/en/about', label: t.nav.about },
+  { href: lang === 'es' ? '/servicios' : '/en/services', label: t.nav.services },
+  { href: lang === 'es' ? '/portafolio' : '/en/portfolio', label: t.nav.portfolio },
+  { href: lang === 'es' ? '/contacto' : '/en/contact', label: t.nav.contact },
 ];
 
-const currentPath = Astro.url.pathname;
+const alternateUrl = getAlternateLangUrl(Astro.url, lang);
 ---
 
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 border-2 border-dorado flex items-center justify-center transition-all duration-300 group-hover:bg-dorado">
-          <span class="font-serif text-dorado text-xl font-bold group-hover:text-negro transition-colors">C</span>
+      <a href={lang === 'es' ? '/' : '/en/'} class="flex items-center gap-3 group relative z-50">
+        <div class="w-10 h-10 border-2 border-dorado flex items-center justify-center transition-all duration-300 group-hover:bg-dorado group-hover:rotate-45">
+          <span class="font-serif text-dorado text-xl font-bold group-hover:text-negro transition-all duration-300 group-hover:-rotate-45">C</span>
         </div>
         <div class="hidden sm:block">
           <span class="font-serif text-xl font-semibold tracking-wider text-blanco">CONSTRU</span><span class="font-serif text-xl font-semibold tracking-wider text-dorado">ESCALA</span>
@@ -24,31 +35,58 @@ const currentPath = Astro.url.pathname;
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden lg:flex items-center gap-10">
+      <div class="hidden lg:flex items-center gap-1">
         {navLinks.map(link => (
           <a
             href={link.href}
-            class={`text-sm tracking-widest uppercase font-medium transition-colors duration-300 hover-gold ${
-              currentPath === link.href ? 'text-dorado' : 'text-blanco/80 hover:text-dorado'
+            class={`relative px-5 py-2 text-sm tracking-widest uppercase font-medium transition-all duration-300 group ${
+              currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+                ? 'text-dorado'
+                : 'text-blanco/80 hover:text-dorado'
             }`}
           >
-            {link.label}
+            <span class="relative z-10">{link.label}</span>
+            <div class="absolute inset-0 bg-dorado/10 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-sm"></div>
+            {(currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))) && (
+              <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-dorado"></div>
+            )}
           </a>
         ))}
-        <a href="/contacto" class="btn-dorado text-xs">
-          Contáctanos
+      </div>
+
+      <!-- Right Section -->
+      <div class="hidden lg:flex items-center gap-4">
+        <!-- Language Switcher -->
+        <a
+          href={alternateUrl}
+          class="flex items-center gap-2 px-3 py-2 border border-gris-borde hover:border-dorado transition-all duration-300 group"
+          title={lang === 'es' ? 'English' : 'Español'}
+        >
+          {lang === 'es' ? (
+            <img src="https://flagcdn.com/w20/gb.png" alt="EN" class="w-5 h-auto" />
+          ) : (
+            <img src="https://flagcdn.com/w20/es.png" alt="ES" class="w-5 h-auto" />
+          )}
+        </a>
+
+        <!-- CTA Button -->
+        <a href={lang === 'es' ? '/contacto' : '/en/contact'} class="relative px-6 py-2.5 bg-dorado text-negro font-semibold tracking-wider uppercase text-xs overflow-hidden group">
+          <span class="relative z-10 group-hover:text-negro transition-colors duration-300">{t.nav.cta}</span>
+          <div class="absolute inset-0 bg-dorado-claro transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
         </a>
       </div>
 
       <!-- Mobile Menu Button -->
       <button
         id="menu-btn"
-        class="lg:hidden flex flex-col gap-1.5 p-2 group"
-        aria-label="Menú"
+        class="lg:hidden relative w-10 h-10 flex items-center justify-center z-50"
+        aria-label="Menu"
       >
-        <span class="w-6 h-0.5 bg-blanco transition-all duration-300 group-hover:bg-dorado"></span>
-        <span class="w-6 h-0.5 bg-blanco transition-all duration-300 group-hover:bg-dorado"></span>
-        <span class="w-4 h-0.5 bg-dorado transition-all duration-300"></span>
+        <div class="menu-icon">
+          <span class="line line-1"></span>
+          <span class="line line-2"></span>
+          <span class="line line-3"></span>
+        </div>
       </button>
     </div>
   </div>
@@ -56,20 +94,130 @@ const currentPath = Astro.url.pathname;
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="hidden fixed inset-0 bg-negro/98 flex-col items-center justify-center gap-8 lg:hidden"
+    class="fixed inset-0 bg-negro/98 lg:hidden opacity-0 pointer-events-none transition-opacity duration-500"
   >
-    {navLinks.map(link => (
+    <div class="flex flex-col items-center justify-center h-full gap-2">
+      {navLinks.map((link, i) => (
+        <a
+          href={link.href}
+          class="text-3xl md:text-4xl tracking-widest uppercase font-serif text-blanco hover:text-dorado transition-all duration-300 transform translate-y-8 opacity-0 mobile-nav-link"
+          style={`transition-delay: ${i * 0.1}s`}
+        >
+          {link.label}
+        </a>
+      ))}
+
+      <!-- Mobile Language Switcher -->
       <a
-        href={link.href}
-        class={`text-2xl tracking-widest uppercase font-serif transition-colors duration-300 ${
-          currentPath === link.href ? 'text-dorado' : 'text-blanco hover:text-dorado'
-        }`}
+        href={alternateUrl}
+        class="mt-8 flex items-center gap-3 px-6 py-3 border border-gris-borde hover:border-dorado transition-all duration-300 mobile-nav-link opacity-0 translate-y-8"
+        style={`transition-delay: ${navLinks.length * 0.1}s`}
       >
-        {link.label}
+        {lang === 'es' ? (
+          <img src="https://flagcdn.com/w40/gb.png" alt="EN" class="w-8 h-auto" />
+        ) : (
+          <img src="https://flagcdn.com/w40/es.png" alt="ES" class="w-8 h-auto" />
+        )}
+        <span class="text-blanco text-sm tracking-wider uppercase">{lang === 'es' ? 'English' : 'Español'}</span>
       </a>
-    ))}
-    <a href="/contacto" class="btn-dorado mt-4">
-      Contáctanos
-    </a>
+
+      <!-- Mobile CTA -->
+      <a
+        href={lang === 'es' ? '/contacto' : '/en/contact'}
+        class="mt-4 btn-dorado mobile-nav-link opacity-0 translate-y-8"
+        style={`transition-delay: ${(navLinks.length + 1) * 0.1}s`}
+      >
+        {t.nav.cta}
+      </a>
+    </div>
   </div>
 </nav>
+
+<style>
+  /* Hamburger Menu Animation */
+  .menu-icon {
+    width: 24px;
+    height: 18px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-origin: center;
+  }
+
+  .menu-icon .line-1 {
+    transform-origin: left;
+  }
+
+  .menu-icon .line-3 {
+    transform-origin: right;
+    width: 60%;
+  }
+
+  #menu-btn.active .line-1 {
+    transform: rotate(45deg) translateY(-1px);
+    background-color: #c9a96e;
+  }
+
+  #menu-btn.active .line-2 {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  #menu-btn.active .line-3 {
+    width: 100%;
+    transform: rotate(-45deg) translateY(1px);
+    background-color: #c9a96e;
+  }
+
+  /* Mobile Menu Open State */
+  #mobile-menu.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #mobile-menu.active .mobile-nav-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = mobileMenu?.querySelectorAll('a');
+
+    menuBtn?.addEventListener('click', () => {
+      menuBtn.classList.toggle('active');
+      mobileMenu?.classList.toggle('active');
+      document.body.style.overflow = mobileMenu?.classList.contains('active') ? 'hidden' : '';
+    });
+
+    navLinks?.forEach(link => {
+      link.addEventListener('click', () => {
+        menuBtn?.classList.remove('active');
+        mobileMenu?.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar?.classList.add('navbar-scrolled');
+      } else {
+        navbar?.classList.remove('navbar-scrolled');
+      }
+    });
+  });
+</script>
