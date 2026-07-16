@@ -449,3 +449,364 @@
 .glow:hover::before {
   opacity: 1;
 }
+
+/* ============================================
+   FOOTER IMPROVEMENTS
+   ============================================ */
+
+/* Footer Top Line Animation */
+.footer-top-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-dorado) 50%, transparent 100%);
+  transform: scaleX(0);
+  transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-visible .footer-top-line {
+  transform: scaleX(1);
+}
+
+/* Logo Glow Pulse */
+.logo-glow {
+  position: relative;
+}
+
+.logo-glow::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  background: radial-gradient(circle, var(--color-dorado) 0%, transparent 70%);
+  opacity: 0;
+  z-index: -1;
+  animation: logoPulse 3s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+  0%, 100% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 0.15; transform: scale(1.1); }
+}
+
+/* Footer Link Stagger Reveal */
+.footer-link-reveal {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-visible .footer-link-reveal {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Social Icon Particles */
+.social-icon-wrap {
+  position: relative;
+  overflow: visible;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--color-dorado);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.social-icon-wrap:hover .particle {
+  animation: particleBurst 0.6s ease-out forwards;
+}
+
+.particle:nth-child(1) { --tx: -20px; --ty: -25px; animation-delay: 0s; }
+.particle:nth-child(2) { --tx: 20px; --ty: -20px; animation-delay: 0.05s; }
+.particle:nth-child(3) { --tx: -15px; --ty: 20px; animation-delay: 0.1s; }
+.particle:nth-child(4) { --tx: 25px; --ty: 15px; animation-delay: 0.05s; }
+.particle:nth-child(5) { --tx: 0px; --ty: -30px; animation-delay: 0.08s; }
+.particle:nth-child(6) { --tx: -25px; --ty: 0px; animation-delay: 0.12s; }
+
+@keyframes particleBurst {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0);
+  }
+}
+
+/* Footer Bottom Decorative Lines */
+.footer-bottom-border {
+  position: relative;
+}
+
+.footer-bottom-border::before,
+.footer-bottom-border::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 1px;
+  width: 0;
+  background: var(--color-dorado);
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-bottom-border::before {
+  left: 0;
+}
+
+.footer-bottom-border::after {
+  right: 0;
+}
+
+.footer-visible .footer-bottom-border::before,
+.footer-visible .footer-bottom-border::after {
+  width: 80px;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--color-negro);
+  border: 1px solid var(--color-dorado);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--color-dorado);
+  transform: translateY(-3px);
+}
+
+.back-to-top svg {
+  transition: transform 0.3s ease;
+}
+
+.back-to-top:hover svg {
+  transform: translateY(-3px);
+}
+
+/* Footer Gradient Background */
+.footer-gradient-bg {
+  background: 
+    radial-gradient(ellipse at 20% 0%, rgba(201, 169, 110, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(201, 169, 110, 0.02) 0%, transparent 50%),
+    var(--color-negro);
+}
+
+/* ============================================
+   NAVBAR IMPROVEMENTS
+   ============================================ */
+
+/* Navbar Glassmorphism Enhanced */
+.navbar-scrolled {
+  background: rgba(26, 26, 26, 0.85) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 
+    0 1px 0 rgba(201, 169, 110, 0.1),
+    0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Nav Link Spotlight Effect */
+.nav-links-container {
+  position: relative;
+}
+
+.nav-spotlight {
+  position: absolute;
+  height: 100%;
+  background: rgba(201, 169, 110, 0.08);
+  border-radius: 2px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease, left 0.3s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  top: 0;
+}
+
+.nav-links-container:hover .nav-spotlight {
+  opacity: 1;
+}
+
+/* Logo Breathing Animation */
+.logo-breathe {
+  animation: logoBreathe 4s ease-in-out infinite;
+}
+
+@keyframes logoBreathe {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 rgba(201, 169, 110, 0);
+  }
+  50% { 
+    box-shadow: 0 0 15px 2px rgba(201, 169, 110, 0.2);
+  }
+}
+
+/* CTA Shimmer Effect */
+.cta-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  50%, 100% { left: 100%; }
+}
+
+/* Language Switcher Flip */
+.lang-flip {
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.lang-flip:hover {
+  transform: rotateY(360deg);
+}
+
+/* Active Nav Link Glow */
+.nav-link-active {
+  position: relative;
+}
+
+.nav-link-active::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 8px;
+  background: radial-gradient(ellipse, var(--color-dorado) 0%, transparent 70%);
+  opacity: 0.5;
+  filter: blur(4px);
+}
+
+/* Mobile Menu Active State */
+#mobile-menu.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Mobile Menu Clip-Path Reveal */
+.mobile-clip-reveal {
+  clip-path: inset(0 0 100% 0);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#mobile-menu.active .mobile-clip-reveal {
+  clip-path: inset(0 0 0% 0);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile Menu Background Pattern */
+.mobile-menu-bg {
+  background: 
+    linear-gradient(135deg, rgba(201, 169, 110, 0.03) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(201, 169, 110, 0.03) 25%, transparent 25%),
+    linear-gradient(315deg, rgba(201, 169, 110, 0.03) 25%, transparent 25%),
+    linear-gradient(45deg, rgba(201, 169, 110, 0.03) 25%, transparent 25%),
+    var(--color-negro);
+  background-size: 60px 60px;
+}
+
+/* Hamburger 3D Rotation */
+.menu-icon-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+#menu-btn.active .menu-icon-3d {
+  transform: rotateY(180deg);
+}
+
+/* Hamburger Lines Enhanced */
+.line-enhanced {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform-origin: center;
+}
+
+#menu-btn.active .line-enhanced {
+  background-color: #c9a96e;
+}
+
+#menu-btn.active .line-enhanced-1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+#menu-btn.active .line-enhanced-2 {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+#menu-btn.active .line-enhanced-3 {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Nav Link Hover Line */
+.nav-hover-line {
+  position: relative;
+}
+
+.nav-hover-line::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-dorado);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(-50%);
+}
+
+.nav-hover-line:hover::after {
+  width: 100%;
+}
+
+.nav-hover-line.active::after {
+  width: 100%;
+}

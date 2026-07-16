@@ -26,8 +26,8 @@ const alternateUrl = getAlternateLangUrl(Astro.url, lang);
     <div class="flex items-center justify-between h-20">
       <!-- Logo -->
       <a href={`/${lang}/`} class="flex items-center gap-3 group relative z-50">
-        <div class="w-10 h-10 border-2 border-dorado flex items-center justify-center transition-all duration-300 group-hover:bg-dorado group-hover:rotate-45">
-          <span class="font-serif text-dorado text-xl font-bold group-hover:text-negro transition-all duration-300 group-hover:-rotate-45">C</span>
+        <div class="w-11 h-11 border-2 border-dorado flex items-center justify-center transition-all duration-500 group-hover:bg-dorado group-hover:rotate-45 logo-breathe">
+          <span class="font-serif text-dorado text-xl font-bold group-hover:text-negro transition-all duration-500 group-hover:-rotate-45">C</span>
         </div>
         <div class="hidden sm:block">
           <span class="font-serif text-xl font-semibold tracking-wider text-blanco">CONSTRU</span><span class="font-serif text-xl font-semibold tracking-wider text-dorado">ESCALA</span>
@@ -35,23 +35,20 @@ const alternateUrl = getAlternateLangUrl(Astro.url, lang);
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden lg:flex items-center gap-1">
-        {navLinks.map(link => (
-          <a
-            href={link.href}
-            class={`relative px-5 py-2 text-sm tracking-widest uppercase font-medium transition-all duration-300 group ${
-              currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
-                ? 'text-dorado'
-                : 'text-blanco/80 hover:text-dorado'
-            }`}
-          >
-            <span class="relative z-10">{link.label}</span>
-            <div class="absolute inset-0 bg-dorado/10 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-sm"></div>
-            {(currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))) && (
-              <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-dorado"></div>
-            )}
-          </a>
-        ))}
+      <div class="hidden lg:flex items-center gap-1 nav-links-container" id="nav-links">
+        <div class="nav-spotlight" id="nav-spotlight"></div>
+        {navLinks.map(link => {
+          const isActive = currentPath === link.href || (link.href !== `/${lang}/` && currentPath.startsWith(link.href));
+          return (
+            <a
+              href={link.href}
+              data-nav-link
+              class={`relative px-5 py-2 text-sm tracking-widest uppercase font-medium transition-all duration-300 group nav-hover-line ${isActive ? 'text-dorado active' : 'text-blanco/80 hover:text-dorado'}`}
+            >
+              <span class="relative z-10">{link.label}</span>
+            </a>
+          );
+        })}
       </div>
 
       <!-- Right Section -->
@@ -59,7 +56,7 @@ const alternateUrl = getAlternateLangUrl(Astro.url, lang);
         <!-- Language Switcher -->
         <a
           href={alternateUrl}
-          class="flex items-center gap-2 px-3 py-2 border border-gris-borde hover:border-dorado transition-all duration-300 group"
+          class="flex items-center gap-2 px-3 py-2 border border-gris-borde hover:border-dorado transition-all duration-300 group lang-flip"
           title={lang === 'es' ? 'English' : 'Español'}
         >
           {lang === 'es' ? (
@@ -70,7 +67,7 @@ const alternateUrl = getAlternateLangUrl(Astro.url, lang);
         </a>
 
         <!-- CTA Button -->
-        <a href={`/${lang}/contact`} class="relative px-6 py-2.5 bg-dorado text-negro font-semibold tracking-wider uppercase text-xs overflow-hidden group">
+        <a href={`/${lang}/contact`} class="relative px-6 py-2.5 bg-dorado text-negro font-semibold tracking-wider uppercase text-xs overflow-hidden group cta-shimmer">
           <span class="relative z-10 group-hover:text-negro transition-colors duration-300">{t.nav.cta}</span>
           <div class="absolute inset-0 bg-dorado-claro transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
         </a>
@@ -79,13 +76,13 @@ const alternateUrl = getAlternateLangUrl(Astro.url, lang);
       <!-- Mobile Menu Button -->
       <button
         id="menu-btn"
-        class="lg:hidden relative w-10 h-10 flex items-center justify-center z-50"
+        class="lg:hidden relative w-10 h-10 flex items-center justify-center z-[60]"
         aria-label="Menu"
       >
-        <div class="menu-icon">
-          <span class="line line-1"></span>
-          <span class="line line-2"></span>
-          <span class="line line-3"></span>
+        <div class="flex flex-col gap-[5px] w-6">
+          <span class="block w-full h-[2px] bg-white transition-all duration-300 origin-center line-1"></span>
+          <span class="block w-full h-[2px] bg-white transition-all duration-300 origin-center line-2"></span>
+          <span class="block w-3/5 h-[2px] bg-white transition-all duration-300 origin-right line-3"></span>
         </div>
       </button>
     </div>
@@ -94,14 +91,14 @@ const alternateUrl = getAlternateLangUrl(Astro.url, lang);
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="fixed inset-0 bg-negro/98 lg:hidden opacity-0 pointer-events-none transition-opacity duration-500"
+    class="fixed inset-0 mobile-menu-bg lg:hidden opacity-0 pointer-events-none transition-opacity duration-500"
   >
-    <div class="flex flex-col items-center justify-center h-full gap-2">
+    <div class="flex flex-col items-center justify-center h-full gap-3">
       {navLinks.map((link, i) => (
         <a
           href={link.href}
-          class="text-3xl md:text-4xl tracking-widest uppercase font-serif text-blanco hover:text-dorado transition-all duration-300 transform translate-y-8 opacity-0 mobile-nav-link"
-          style={`transition-delay: ${i * 0.1}s`}
+          class="mobile-clip-reveal text-3xl md:text-4xl tracking-widest uppercase font-serif text-blanco hover:text-dorado transition-colors duration-300"
+          style={`transition-delay: ${0.1 + i * 0.08}s`}
         >
           {link.label}
         </a>
@@ -110,8 +107,8 @@ const alternateUrl = getAlternateLangUrl(Astro.url, lang);
       <!-- Mobile Language Switcher -->
       <a
         href={alternateUrl}
-        class="mt-8 flex items-center gap-3 px-6 py-3 border border-gris-borde hover:border-dorado transition-all duration-300 mobile-nav-link opacity-0 translate-y-8"
-        style={`transition-delay: ${navLinks.length * 0.1}s`}
+        class="mt-8 flex items-center gap-3 px-6 py-3 border border-gris-borde hover:border-dorado transition-all duration-300 mobile-clip-reveal"
+        style={`transition-delay: ${0.1 + navLinks.length * 0.08}s`}
       >
         {lang === 'es' ? (
           <img src="/images/flags/en-large.png" alt="EN" class="w-8 h-auto" />
@@ -124,8 +121,8 @@ const alternateUrl = getAlternateLangUrl(Astro.url, lang);
       <!-- Mobile CTA -->
       <a
         href={`/${lang}/contact`}
-        class="mt-4 btn-dorado mobile-nav-link opacity-0 translate-y-8"
-        style={`transition-delay: ${(navLinks.length + 1) * 0.1}s`}
+        class="mt-4 btn-dorado mobile-clip-reveal"
+        style={`transition-delay: ${0.1 + (navLinks.length + 1) * 0.08}s`}
       >
         {t.nav.cta}
       </a>
@@ -134,36 +131,9 @@ const alternateUrl = getAlternateLangUrl(Astro.url, lang);
 </nav>
 
 <style>
-  /* Hamburger Menu Animation */
-  .menu-icon {
-    width: 24px;
-    height: 18px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .line {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: #ffffff;
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    transform-origin: center;
-  }
-
-  .menu-icon .line-1 {
-    transform-origin: left;
-  }
-
-  .menu-icon .line-3 {
-    transform-origin: right;
-    width: 60%;
-  }
-
+  /* Hamburger Animation */
   #menu-btn.active .line-1 {
-    transform: rotate(45deg) translateY(-1px);
+    transform: rotate(45deg) translate(5px, 5px);
     background-color: #c9a96e;
   }
 
@@ -174,19 +144,8 @@ const alternateUrl = getAlternateLangUrl(Astro.url, lang);
 
   #menu-btn.active .line-3 {
     width: 100%;
-    transform: rotate(-45deg) translateY(1px);
+    transform: rotate(-45deg) translate(5px, -5px);
     background-color: #c9a96e;
-  }
-
-  /* Mobile Menu Open State */
-  #mobile-menu.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  #mobile-menu.active .mobile-nav-link {
-    opacity: 1;
-    transform: translateY(0);
   }
 </style>
 
@@ -194,15 +153,19 @@ const alternateUrl = getAlternateLangUrl(Astro.url, lang);
   document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = mobileMenu?.querySelectorAll('a');
+    const mobileLinks = mobileMenu?.querySelectorAll('a');
+    const navLinksContainer = document.getElementById('nav-links');
+    const spotlight = document.getElementById('nav-spotlight');
+    const navLinks = navLinksContainer?.querySelectorAll('[data-nav-link]');
 
+    // Mobile menu toggle
     menuBtn?.addEventListener('click', () => {
       menuBtn.classList.toggle('active');
       mobileMenu?.classList.toggle('active');
       document.body.style.overflow = mobileMenu?.classList.contains('active') ? 'hidden' : '';
     });
 
-    navLinks?.forEach(link => {
+    mobileLinks?.forEach(link => {
       link.addEventListener('click', () => {
         menuBtn?.classList.remove('active');
         mobileMenu?.classList.remove('active');
@@ -210,14 +173,44 @@ const alternateUrl = getAlternateLangUrl(Astro.url, lang);
       });
     });
 
-    // Navbar scroll effect
+    // Nav spotlight effect
+    if (navLinksContainer && spotlight && navLinks) {
+      navLinksContainer.addEventListener('mousemove', (e) => {
+        const target = e.target as HTMLElement;
+        const navLink = target.closest('[data-nav-link]') as HTMLElement;
+        
+        if (navLink) {
+          const containerRect = navLinksContainer.getBoundingClientRect();
+          const linkRect = navLink.getBoundingClientRect();
+          
+          const left = linkRect.left - containerRect.left;
+          const width = linkRect.width;
+          
+          spotlight.style.left = `${left}px`;
+          spotlight.style.width = `${width}px`;
+          spotlight.style.opacity = '1';
+        }
+      });
+
+      navLinksContainer.addEventListener('mouseleave', () => {
+        spotlight.style.opacity = '0';
+      });
+    }
+
+    // Navbar scroll effect with glassmorphism
     const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
+    
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
+      const currentScroll = window.scrollY;
+      
+      if (currentScroll > 50) {
         navbar?.classList.add('navbar-scrolled');
       } else {
         navbar?.classList.remove('navbar-scrolled');
       }
+      
+      lastScroll = currentScroll;
     });
   });
 </script>
